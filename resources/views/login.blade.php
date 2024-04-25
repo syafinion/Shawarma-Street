@@ -471,59 +471,39 @@
     
     <!-- customer login start -->
     <div class="customer_login">
-        <div class="container">
-            <div class="row">
-               <!--login area start-->
-                <div class="col-lg-6 col-md-6">
-                    <div class="account_form">
-                        <h2>login</h2>
-                        <form action="#">
-                            <p>   
-                                <label>Username or email <span>*</span></label>
-                                <input type="text">
-                             </p>
-                             <p>   
-                                <label>Passwords <span>*</span></label>
-                                <input type="password">
-                             </p>   
-                            <div class="login_submit">
-                               <a href="#">Lost your password?</a>
-                                <label for="remember">
-                                    <input id="remember" type="checkbox">
-                                    Remember me
-                                </label>
-                                <button type="submit">login</button>
-                                
-                            </div>
-
-                        </form>
-                     </div>    
+    <div class="container">
+        <div class="row">
+            <!-- login area start -->
+            <div class="col-lg-6 col-md-6">
+                <div class="account_form">
+                    <h2>Login</h2>
+                    <!-- Update the action to /login and method to POST -->
+                    <form action="/login" method="POST">
+                        @csrf <!-- CSRF Token for Laravel form submission security -->
+                        <p>
+                            <label>Username or email <span>*</span></label>
+                            <input type="text" name="email" required>
+                        </p>
+                        <p>
+                            <label>Password <span>*</span></label>
+                            <input type="password" name="password" required>
+                        </p>
+                        <div class="login_submit">
+                            <a href="#">Lost your password?</a>
+                            <label for="remember">
+                                <input id="remember" type="checkbox" name="remember">
+                                Remember me
+                            </label>
+                            <button type="submit">Login</button>
+                        </div>
+                    </form>
                 </div>
-                <!--login area start-->
-
-                <!--register area start-->
-                <div class="col-lg-6 col-md-6">
-                    <div class="account_form register">
-                        <h2>Register</h2>
-                        <form action="#">
-                            <p>   
-                                <label>Email address  <span>*</span></label>
-                                <input type="text">
-                             </p>
-                             <p>   
-                                <label>Passwords <span>*</span></label>
-                                <input type="password">
-                             </p>
-                            <div class="login_submit">
-                                <button type="submit">Register</button>
-                            </div>
-                        </form>
-                    </div>    
-                </div>
-                <!--register area end-->
             </div>
-        </div>    
+            <!-- login area end -->
+        </div>
     </div>
+</div>
+
     <!-- customer login end -->
     @include('components.footer')
     <!--footer area end-->

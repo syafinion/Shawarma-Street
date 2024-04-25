@@ -73,16 +73,6 @@
                                         <option value="4">Butters & Eggs</option>
                                         <option value="5">Camera & Video </option>
                                         <option value="6">Mornitors</option>
-                                        <option value="7">Tablets</option>
-                                        <option value="8">Laptops</option>
-                                        <option value="9">Handbags</option>
-                                        <option value="10">Headphone & Speaker</option>
-                                        <option value="11">Herbs & botanicals</option>
-                                        <option value="12">Vegetables</option>
-                                        <option value="13">Shop</option>
-                                        <option value="14">Laptops & Desktops</option>
-                                        <option value="15">Watchs</option>
-                                        <option value="16">Electronic</option>
                                     </select>                        
                                </div>
                                 <div class="search_box">
@@ -243,13 +233,21 @@
 
                         <div class="col-lg-4 col-md-6 col-sm-7 col-8">
                             <div class="header_account_area">
-                                <div class="header_account_list register">
-                                    <ul>
-                                        <li><a href="login.html">Register</a></li>
+                            <div class="header_account_list register">
+                                <ul>
+                                    @if(Auth::check())
+                                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    @else
+                                        <li><a href="{{ route('login') }}">Login</a></li>
                                         <li><span>/</span></li>
-                                        <li><a href="login.html">Login</a></li>
-                                    </ul>
-                                </div>
+                                        <li><a href="{{ route('register') }}">Register</a></li>
+                                    @endif
+                                </ul>
+                            </div>
+
                                 <!-- <div class="header_account_list header_wishlist">
                                     <a href="wishlist.html"><span class="lnr lnr-heart"></span> <span class="item_count">3</span> </a>
                                 </div> -->

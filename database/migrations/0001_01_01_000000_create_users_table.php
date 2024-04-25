@@ -6,44 +6,107 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
+        // Users Table
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->id('user_id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('password_hash');
+            $table->string('phone_number', 15)->nullable();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('deleted_at')->nullable();
         });
 
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        // Categories Table
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id('category_id');
+            $table->string('name');
+            $table->text('description')->nullable();
         });
 
-        Schema::create('sessions', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
-            $table->string('ip_address', 45)->nullable();
-            $table->text('user_agent')->nullable();
-            $table->longText('payload');
-            $table->integer('last_activity')->index();
+        // Items Table
+        Schema::create('items', function (Blueprint $table) {
+            $table->id('item_id');
+            $table->foreignId('category_id')->constrained('categories', 'category_id');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->decimal('price', 10, 2);
+            $table->string('image_url')->nullable();
+            $table->boolean('available_status')->default(true);
+            $table->integer('stock');
+        });
+
+        // Carts Table
+        Schema::create('carts', function (Blueprint $table) {
+            $table->id('cart_id');
+            $table->foreignId('user_id')->constrained('users', 'user_id');
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+        });
+
+        // Cart Items Table
+        Schema::create('cart_items', function (Blueprint $table) {
+            $table->id('cart_item_id');
+            $table->foreignId('cart_id')->constrained('carts', 'cart_id');
+            $table->foreignId('item_id')->constrained('items', 'item_id');
+            $table->integer('quantity');
+        });
+
+        // Orders Table
+        Schema::create('orders', function (Blueprint $table) {
+            $table->id('order_id');
+            $table->foreignId('user_id')->constrained('users', 'user_id');
+            $table->decimal('total_price', 10, 2);
+            $table->string('order_status');
+            $table->string('payment_transaction_id')->nullable();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+        });
+
+        // Order Items Table
+        Schema::create('order_items', function (Blueprint $table) {
+            $table->id('order_item_id');
+            $table->foreignId('order_id')->constrained('orders', 'order_id');
+            $table->foreignId('item_id')->constrained('items', 'item_id');
+            $table->integer('quantity');
+            $table->decimal('price', 10, 2);
+        });
+
+        // Addresses Table
+        Schema::create('addresses', function (Blueprint $table) {
+            $table->id('address_id');
+            $table->foreignId('user_id')->constrained('users', 'user_id');
+            $table->string('address_line1');
+            $table->string('address_line2')->nullable();
+            $table->string('city');
+            $table->string('state');
+            $table->string('zip_code');
+            $table->string('country');
+        });
+
+        // Indexes
+        Schema::table('items', function (Blueprint $table) {
+            $table->index('category_id', 'idx_category');
+        });
+
+        Schema::table('orders', function (Blueprint $table) {
+            $table->index('user_id', 'idx_user');
+        });
+
+        Schema::table('carts', function (Blueprint $table) {
+            $table->index('user_id', 'idx_cart_user');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
+        Schema::dropIfExists('addresses');
+        Schema::dropIfExists('order_items');
+        Schema::dropIfExists('orders');
+        Schema::dropIfExists('cart_items');
+        Schema::dropIfExists('carts');
+        Schema::dropIfExists('items');
+        Schema::dropIfExists('categories');
         Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
-        Schema::dropIfExists('sessions');
     }
 };
