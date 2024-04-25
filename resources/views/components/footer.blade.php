@@ -1,4 +1,4 @@
-<!-- footer area start-->
+<!--footer area start-->
 <footer class="footer_widgets footer_border">
         <div class="container">
             <div class="footer_top">
@@ -6,7 +6,7 @@
                         <div class="col-lg-4 col-md-12 col-sm-7">
                             <div class="widgets_container contact_us">
                                <div class="footer_logo">
-                                   <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                   <!-- <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a> -->
                                </div>
                                <p class="footer_desc">We are a team of designers and developers that create high quality eCommerce, WordPress, Shopify .</p>
                                 <p><span>Address:</span> 4710-4890 Breckinridge USA</p>
@@ -67,4 +67,4 @@
             </div>
         </div>     
     </footer>
-    <!--footer area end -->
+    <!--footer area end-->

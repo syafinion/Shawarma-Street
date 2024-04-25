@@ -21,3 +21,8 @@ Route::get('/checkout', function () {
 Route::get('/restaurantmenu', function () {
     return view('restaurantmenu');
 });
+
+// Menu page
+Route::get('/login', function () {
+    return view('login');
+});

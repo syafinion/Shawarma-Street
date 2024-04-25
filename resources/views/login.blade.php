@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Safira - login</title>
+    <title>login</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -62,37 +62,7 @@
                         <div class="canvas_close">
                             <a href="javascript:void(0)"><i class="icon-x"></i></a>  
                         </div>
-                        <div class="language_currency">
-                            <ul>
-                                <li class="language"><a href="#"> Language <i class="icon-right ion-ios-arrow-down"></i></a>
-                                    <ul class="dropdown_language">
-                                        <li><a href="#">French</a></li>
-                                        <li><a href="#">Spanish</a></li>
-                                        <li><a href="#">Russian</a></li>
-                                    </ul>
-                                </li>
-                                <li class="currency"><a href="#"> Currency <i class="icon-right ion-ios-arrow-down"></i></a>
-                                    <ul class="dropdown_currency">
-                                        <li><a href="#">€ Euro</a></li>
-                                        <li><a href="#">£ Pound Sterling</a></li>
-                                        <li><a href="#">$ US Dollar</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="header_social text-right">
-                            <ul>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                            </ul>
-                        </div>
-                        
-                        <div class="call-support">
-                            <p><a href="tel:(08)23456789">(08) 23 456 789</a> Customer Support</p>
-                        </div>
+
                         <div id="menu" class="text-left ">
                             <ul class="offcanvas_main_menu">
                                 <li class="menu-item-has-children active">
@@ -102,28 +72,18 @@
                                             <a href="#">Home Organic</a>
                                             <ul class="sub-menu">
                                                 <li><a href="index.html">Organic 01</a></li>
-                                                <li><a href="index-2.html">Organic 02</a></li>
-                                                <li><a href="index-3.html">Organic 03</a></li>
-                                                <li><a href="index-4.html">Organic 04</a></li>
-                                                <li><a href="index-5.html">Organic 05</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="#">Home Fashion</a>
                                             <ul class="sub-menu">
                                                 <li><a href="index-8.html">Fashion 01</a></li>
-                                                <li><a href="index-9.html">Fashion 02</a></li>
-                                                <li><a href="#">Fashion 03 <span>(Comming Soon)</span></a></li>
-                                                <li><a href="#">Fashion 04 <span>(Comming Soon)</span></a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="#">Home Cosmetic</a>
                                             <ul class="sub-menu">
                                                 <li><a href="index-6.html">Cosmetic 01</a></li>
-                                                <li><a href="index-7.html">Cosmetic 02</a></li>
-                                                <li><a href="#">Cosmetic 03 <span>(Comming Soon)</span></a> </li>
-                                                <li><a href="#">Cosmetic 04 <span>(Comming Soon)</span></a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -135,11 +95,7 @@
                                             <a href="#">Shop Layouts</a>
                                             <ul class="sub-menu">
                                                 <li><a href="shop.html">shop</a></li>
-                                                <li><a href="shop-fullwidth.html">Full Width</a></li>
                                                 <li><a href="shop-fullwidth-list.html">Full Width list</a></li>
-                                                <li><a href="shop-right-sidebar.html">Right Sidebar </a></li>
-                                                <li><a href="shop-right-sidebar-list.html"> Right Sidebar list</a></li>
-                                                <li><a href="shop-list.html">List View</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
@@ -162,16 +118,6 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">blog</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="blog-details.html">blog details</a></li>
-                                        <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                        <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                    </ul>
-
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="#">pages </a>
@@ -211,35 +157,9 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-md-6">
-                            <div class="language_currency">
-                                <ul>
-                                    <li class="language"><a href="#"> Language <i class="icon-right ion-ios-arrow-down"></i></a>
-                                        <ul class="dropdown_language">
-                                            <li><a href="#">French</a></li>
-                                            <li><a href="#">Spanish</a></li>
-                                            <li><a href="#">Russian</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="currency"><a href="#"> Currency <i class="icon-right ion-ios-arrow-down"></i></a>
-                                        <ul class="dropdown_currency">
-                                            <li><a href="#">€ Euro</a></li>
-                                            <li><a href="#">£ Pound Sterling</a></li>
-                                            <li><a href="#">$ US Dollar</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="header_social text-right">
-                                <ul>
-                                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                                </ul>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -260,20 +180,6 @@
                                             <select class="select_option" name="select" id="categori2">
                                                 <option selected value="1">Select a categories</option>
                                                 <option value="2">Accessories</option>
-                                                <option value="3">Accessories & More</option>
-                                                <option value="4">Butters & Eggs</option>
-                                                <option value="5">Camera & Video </option>
-                                                <option value="6">Mornitors</option>
-                                                <option value="7">Tablets</option>
-                                                <option value="8">Laptops</option>
-                                                <option value="9">Handbags</option>
-                                                <option value="10">Headphone & Speaker</option>
-                                                <option value="11">Herbs & botanicals</option>
-                                                <option value="12">Vegetables</option>
-                                                <option value="13">Shop</option>
-                                                <option value="14">Laptops & Desktops</option>
-                                                <option value="15">Watchs</option>
-                                                <option value="16">Electronic</option>
                                             </select>                        
                                        </div>
                                         <div class="search_box">
@@ -306,18 +212,7 @@
                                                 		<a href="javascript:void(0)"><i class="icon-x"></i></a>
                                                 	</div>
                                                 </div>
-                                                <div class="cart_item">
-                                                   <div class="cart_img">
-                                                       <a href="#"><img src="assets/img/s-product/product.jpg" alt=""></a>
-                                                   </div>
-                                                    <div class="cart_info">
-                                                        <a href="#">Primis In Faucibus</a>
-                                                        <p>1 x <span> $65.00 </span></p>    
-                                                    </div>
-                                                    <div class="cart_remove">
-                                                        <a href="#"><i class="icon-x"></i></a>
-                                                    </div>
-                                                </div>
+ 
                                                 <div class="cart_item">
                                                    <div class="cart_img">
                                                        <a href="#"><img src="assets/img/s-product/product2.jpg" alt=""></a>
@@ -375,16 +270,6 @@
                                             <option value="4">Butters & Eggs</option>
                                             <option value="5">Camera & Video </option>
                                             <option value="6">Mornitors</option>
-                                            <option value="7">Tablets</option>
-                                            <option value="8">Laptops</option>
-                                            <option value="9">Handbags</option>
-                                            <option value="10">Headphone & Speaker</option>
-                                            <option value="11">Herbs & botanicals</option>
-                                            <option value="12">Vegetables</option>
-                                            <option value="13">Shop</option>
-                                            <option value="14">Laptops & Desktops</option>
-                                            <option value="15">Watchs</option>
-                                            <option value="16">Electronic</option>
                                         </select>                        
                                    </div>
                                     <div class="search_box">
@@ -447,22 +332,6 @@
                                                         <li><a href="">living room</a></li>
                                                     </ul>
                                                 </li>
-                                                <li class="menu_item_children"><a href="#">Lighting</a>
-                                                    <ul class="categorie_sub_menu">
-                                                        <li><a href="">Ceiling Lighting</a></li>
-                                                        <li><a href="">Wall Lighting</a></li>
-                                                        <li><a href="">Outdoor Lighting</a></li>
-                                                        <li><a href="">Smart Lighting</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu_item_children"><a href="#">Sofa</a>
-                                                    <ul class="categorie_sub_menu">
-                                                        <li><a href="">Fabric Sofas</a></li>
-                                                        <li><a href="">Leather Sofas</a></li>
-                                                        <li><a href="">Corner Sofas</a></li>
-                                                        <li><a href="">Sofa Beds</a></li>
-                                                    </ul>
-                                                </li>
                                             </ul>
                                         </li>
                                         <li class="menu_item_children"><a href="#"> Salads<i class="fa fa-angle-right"></i></a>
@@ -478,9 +347,6 @@
                                                 <li class="menu_item_children"><a href="#">Emergency Brake</a>
                                                     <ul class="categorie_sub_menu">
                                                         <li><a href="">Dolls for Girls</a></li>
-                                                        <li><a href="">Girls' Learning Toys</a></li>
-                                                        <li><a href="">Arts and Crafts for Girls</a></li>
-                                                        <li><a href="">Video Games for Girls</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -490,17 +356,11 @@
                                                 <li class="menu_item_children"><a href="#">Check Trousers</a>
                                                     <ul class="categorie_sub_menu">
                                                         <li><a href="">Building</a></li>
-                                                        <li><a href="">Electronics</a></li>
-                                                        <li><a href="">action figures </a></li>
-                                                        <li><a href="">specialty & boutique toy</a></li>
                                                     </ul>
                                                 </li>
                                                 <li class="menu_item_children"><a href="#">Calculators</a>
                                                     <ul class="categorie_sub_menu">
                                                         <li><a href="">Dolls for Girls</a></li>
-                                                        <li><a href="">Girls' Learning Toys</a></li>
-                                                        <li><a href="">Arts and Crafts for Girls</a></li>
-                                                        <li><a href="">Video Games for Girls</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -559,10 +419,6 @@
                                                     <li><a href="#">Shop Layouts</a>
                                                         <ul>
                                                             <li><a href="shop-fullwidth.html">Full Width</a></li>
-                                                            <li><a href="shop-fullwidth-list.html">Full Width list</a></li>
-                                                            <li><a href="shop-right-sidebar.html">Right Sidebar </a></li>
-                                                            <li><a href="shop-right-sidebar-list.html"> Right Sidebar list</a></li>
-                                                            <li><a href="shop-list.html">List View</a></li>
                                                         </ul>
                                                     </li>
                                                     <li><a href="#">other Pages</a>
@@ -585,13 +441,6 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </li>
-                                        <li><a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
-                                            <ul class="sub_menu pages">
-                                                <li><a href="blog-details.html">blog details</a></li>
-                                                <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                                <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                            </ul>
                                         </li>
                                         <li><a class="active" href="#">pages <i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
@@ -695,97 +544,7 @@
         </div>    
     </div>
     <!-- customer login end -->
-
-    <!--footer area start-->
-    <footer class="footer_widgets footer_border">
-        <div class="container">
-            <div class="footer_top">
-                <div class="row">
-                        <div class="col-lg-4 col-md-12 col-sm-7">
-                            <div class="widgets_container contact_us">
-                               <div class="footer_logo">
-                                   <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
-                               </div>
-                               <p class="footer_desc">We are a team of designers and developers that create high quality eCommerce, WordPress, Shopify .</p>
-                                <p><span>Address:</span> 4710-4890 Breckinridge USA</p>
-                                <p><span>Email:</span> <a href="#">demo@hasthemes.com</a></p>
-                                <p><span>Call us:</span> <a href="tel:(08)23456789">(08) 23 456 789</a> </p>
-                            </div>          
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-5">
-                            <div class="widgets_container widget_menu">
-                                <h3>Information</h3>
-                                <div class="footer_menu">
-
-                                    <ul>
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="#">Delivery Information</a></li>
-                                        <li><a href="#"> Privacy Policy</a></li>
-                                        <li><a href="#"> Terms & Conditions</a></li>
-                                        <li><a href="contact.html"> Contact Us</a></li>
-                                        <li><a href="#"> Site Map</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-4">
-                            <div class="widgets_container widget_menu">
-                                <h3>Extras</h3>
-                                <div class="footer_menu">
-                                    <ul>
-                                        <li><a href="#">Brands</a></li>
-                                        <li><a href="#">  Gift Certificates</a></li>
-                                        <li><a href="#">Affiliate</a></li>
-                                        <li><a href="#">Specials</a></li>
-                                        <li><a href="#">Returns</a></li>
-                                        <li><a href="#"> Order History</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-8">
-                            <div class="widgets_container widget_newsletter">
-                                <h3>Sign up newsletter</h3>
-                                <p class="footer_desc">Get updates by subscribe our weekly newsletter</p>
-                                <div class="subscribe_form">
-                                    <form id="mc-form" class="mc-form footer-newsletter" >
-                                        <input id="mc-email" type="email" autocomplete="off" placeholder="Enter you email" />
-                                        <button id="mc-submit">Subscribe</button>
-                                    </form>
-                                    <!-- mailchimp-alerts Start -->
-                                    <div class="mailchimp-alerts text-centre">
-                                        <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                                        <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                                        <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                                    </div><!-- mailchimp-alerts end -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>     
-        <div class="footer_bottom">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-7">
-                        <div class="copyright_area">
-                            <p>Copyright  © 2021  <a href="#">Safira</a>  . All Rights Reserved.Design by  <a href="#">Safira</a></p>
-                        </div>
-                    </div>    
-                    <div class="col-lg-6 col-md-5">    
-                        <div class="footer_payment">
-                            <ul>
-                                <li><a href="#"><img src="assets/img/icon/paypal1.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/icon/paypal2.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/icon/paypal3.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/icon/paypal4.jpg" alt=""></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-             </div>   
-        </div>  
-    </footer>
+    @include('components.footer')
     <!--footer area end-->
     
     
