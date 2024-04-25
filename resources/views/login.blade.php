@@ -226,9 +226,6 @@
                                             <li><a href="login.html">Login</a></li>
                                         </ul>
                                     </div>
-                                    <div class="header_account_list header_wishlist">
-                                        <a href="wishlist.html"><span class="lnr lnr-heart"></span> <span class="item_count">3</span> </a>
-                                    </div>
                                     <div class="header_account_list  mini_cart_wrapper">
                                        <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">2</span></a>
                                         <!--mini cart-->
@@ -296,10 +293,6 @@
                                         <select class="select_option" name="select" id="categori2">
                                             <option selected value="1">Select a categories</option>
                                             <option value="2">Accessories</option>
-                                            <option value="3">Accessories & More</option>
-                                            <option value="4">Butters & Eggs</option>
-                                            <option value="5">Camera & Video </option>
-                                            <option value="6">Mornitors</option>
                                         </select>                        
                                    </div>
                                     <div class="search_box">
@@ -324,30 +317,6 @@
                                                         <li><a href="">Evening</a></li>
                                                         <li><a href="">Day</a></li>
                                                         <li><a href="">Sports</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu_item_children"><a href="#">Handbags</a>
-                                                    <ul class="categorie_sub_menu">
-                                                        <li><a href="">Shoulder</a></li>
-                                                        <li><a href="">Satchels</a></li>
-                                                        <li><a href="">kids</a></li>
-                                                        <li><a href="">coats</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu_item_children"><a href="#">shoes</a>
-                                                    <ul class="categorie_sub_menu">
-                                                        <li><a href="">Ankle Boots</a></li>
-                                                        <li><a href="">Clog sandals </a></li>
-                                                        <li><a href="">run</a></li>
-                                                        <li><a href="">Books</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu_item_children"><a href="#">Clothing</a>
-                                                    <ul class="categorie_sub_menu">
-                                                        <li><a href="">Coats  Jackets </a></li>
-                                                        <li><a href="">Raincoats</a></li>
-                                                        <li><a href="">Jackets</a></li>
-                                                        <li><a href="">T-shirts</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -396,14 +365,6 @@
                                             </ul>
                                         </li>
                                         <li><a href="#"> Fresh Meat</a></li>
-                                        <li><a href="#"> Butter & Eggs</a></li>
-                                        <li><a href="#">Milk</a></li>
-                                        <li><a href="#">Oil & Vinegars</a></li>
-                                        <li><a href="#"> Bread</a></li>
-                                        <li><a href="#"> Jam & Honey</a></li>
-                                        <li><a href="#"> Frozen Food</a></li>
-                                        <li class="hidden"><a href="shop.html">New Sofas</a></li>
-                                        <li class="hidden"><a href="shop.html">Sleight Sofas</a></li>
                                         <li><a href="#" id="more-btn"><i class="fa fa-plus" aria-hidden="true"></i> More Categories</a></li>
                                     </ul>
                                 </div>
@@ -419,26 +380,16 @@
                                                 <li><span>Organic</span>
                                                     <ul>
                                                         <li><a href="index.html">Organic 01</a></li>
-                                                        <li><a href="index-2.html">Organic 02</a></li>
-                                                        <li><a href="index-3.html">Organic 03</a></li>
-                                                        <li><a href="index-4.html">Organic 04</a></li>
-                                                        <li><a href="index-5.html">Organic 05</a></li>
                                                     </ul>
                                                 </li>
                                                 <li><span>Fashion</span>
                                                     <ul>
                                                         <li><a href="index-8.html">Fashion 01</a></li>
-                                                        <li><a href="index-9.html">Fashion 02</a></li>
-                                                        <li><a href="#">Fashion 03 <span>(Comming Soon)</span></a></li>
-                                                        <li><a href="#">Fashion 04 <span>(Comming Soon)</span></a></li>
                                                     </ul>
                                                 </li>
                                                 <li><span>Cosmetic</span>
                                                     <ul>
                                                         <li><a href="index-6.html">Cosmetic 01</a></li>
-                                                        <li><a href="index-7.html">Cosmetic 02</a></li>
-                                                        <li><a href="#">Cosmetic 03 <span>(Comming Soon)</span></a> </li>
-                                                        <li><a href="#">Cosmetic 04 <span>(Comming Soon)</span></a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
