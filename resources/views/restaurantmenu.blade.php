@@ -4,9 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Safira - shop fullwidth list</title>
+    <title>Shawarma Restaurant Menu</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
     
@@ -61,33 +62,6 @@
                     <div class="offcanvas_menu_wrapper">
                         <div class="canvas_close">
                             <a href="javascript:void(0)"><i class="icon-x"></i></a>  
-                        </div>
-                        <div class="language_currency">
-                            <ul>
-                                <li class="language"><a href="#"> Language <i class="icon-right ion-ios-arrow-down"></i></a>
-                                    <ul class="dropdown_language">
-                                        <li><a href="#">French</a></li>
-                                        <li><a href="#">Spanish</a></li>
-                                        <li><a href="#">Russian</a></li>
-                                    </ul>
-                                </li>
-                                <li class="currency"><a href="#"> Currency <i class="icon-right ion-ios-arrow-down"></i></a>
-                                    <ul class="dropdown_currency">
-                                        <li><a href="#">€ Euro</a></li>
-                                        <li><a href="#">£ Pound Sterling</a></li>
-                                        <li><a href="#">$ US Dollar</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="header_social text-right">
-                            <ul>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                            </ul>
                         </div>
                         
                         <div class="call-support">
@@ -211,35 +185,6 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-md-6">
-                            <div class="language_currency">
-                                <ul>
-                                    <li class="language"><a href="#"> Language <i class="icon-right ion-ios-arrow-down"></i></a>
-                                        <ul class="dropdown_language">
-                                            <li><a href="#">French</a></li>
-                                            <li><a href="#">Spanish</a></li>
-                                            <li><a href="#">Russian</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="currency"><a href="#"> Currency <i class="icon-right ion-ios-arrow-down"></i></a>
-                                        <ul class="dropdown_currency">
-                                            <li><a href="#">€ Euro</a></li>
-                                            <li><a href="#">£ Pound Sterling</a></li>
-                                            <li><a href="#">$ US Dollar</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="header_social text-right">
-                                <ul>
-                                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -274,18 +219,27 @@
                                 </div>
                                 <div class="header_account_area">
                                     <div class="header_account_list register">
-                                        <ul>
-                                            <li><a href="login.html">Register</a></li>
-                                            <li><span>/</span></li>
-                                            <li><a href="login.html">Login</a></li>
-                                        </ul>
+                                    <ul>
+                                    @if(Auth::check())
+                                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    @else
+                                        <li><a href="{{ route('login') }}">Login</a></li>
+                                        <li><span>/</span></li>
+                                        <li><a href="{{ route('register') }}">Register</a></li>
+                                    @endif
+                                </ul>
                                     </div>
-                                    <div class="header_account_list header_wishlist">
-                                        <a href="wishlist.html"><span class="lnr lnr-heart"></span> <span class="item_count">3</span> </a>
+                                    <div class="header_account_list header_wishlist" >
+                                        <a href="wishlist.html"><span class="lnr lnr-heart" style="display: none;"></span><!-- <span class="item_count" style="display: none;">3</span>--> </a>
                                     </div>
+
                                     <div class="header_account_list  mini_cart_wrapper">
                                        <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">2</span></a>
-                                        <!--mini cart-->
+                                        
+                                       <!--mini cart-->
                                         <div class="mini_cart">
                                             <div class="cart_gallery">
                                                 <div class="cart_close">
@@ -296,42 +250,8 @@
                                                 		<a href="javascript:void(0)"><i class="icon-x"></i></a>
                                                 	</div>
                                                 </div>
-                                                <div class="cart_item">
-                                                   <div class="cart_img">
-                                                       <a href="#"><img src="assets/img/s-product/product.jpg" alt=""></a>
-                                                   </div>
-                                                    <div class="cart_info">
-                                                        <a href="#">Primis In Faucibus</a>
-                                                        <p>1 x <span> $65.00 </span></p>    
-                                                    </div>
-                                                    <div class="cart_remove">
-                                                        <a href="#"><i class="icon-x"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="cart_item">
-                                                   <div class="cart_img">
-                                                       <a href="#"><img src="assets/img/s-product/product2.jpg" alt=""></a>
-                                                   </div>
-                                                    <div class="cart_info">
-                                                        <a href="#">Letraset Sheets</a>
-                                                        <p>1 x <span> $60.00 </span></p>    
-                                                    </div>
-                                                    <div class="cart_remove">
-                                                        <a href="#"><i class="icon-x"></i></a>
-                                                    </div>
-                                                </div>
                                             </div>
                                             <div class="mini_cart_table">
-                                                <div class="cart_table_border">
-                                                    <div class="cart_total">
-                                                        <span>Sub total:</span>
-                                                        <span class="price">$125.00</span>
-                                                    </div>
-                                                    <div class="cart_total mt-10">
-                                                        <span>total:</span>
-                                                        <span class="price">$125.00</span>
-                                                    </div>
-                                                </div>
                                             </div>
                                             <div class="mini_cart_footer">
                                                <div class="cart_button">
@@ -345,6 +265,8 @@
                                         </div>
                                         <!--mini cart end-->
                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
@@ -576,13 +498,6 @@
                                                 </ul>
                                             </div>
                                         </li>
-                                        <li><a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
-                                            <ul class="sub_menu pages">
-                                                <li><a href="blog-details.html">blog details</a></li>
-                                                <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                                <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                            </ul>
-                                        </li>
                                         <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
                                                 <li><a href="about.html">About Us</a></li>
@@ -646,19 +561,6 @@
 
                             <button data-role="grid_list" type="button"  class="active btn-list" data-toggle="tooltip" title="List"></button>
                         </div>
-                        <div class=" niceselect_option">
-                            <form class="select_option" action="#">
-                                <select name="orderby" id="short">
-
-                                    <option selected value="1">Sort by average rating</option>
-                                    <option  value="2">Sort by popularity</option>
-                                    <option value="3">Sort by newness</option>
-                                    <option value="4">Sort by price: low to high</option>
-                                    <option value="5">Sort by price: high to low</option>
-                                    <option value="6">Product Name: Z</option>
-                                </select>
-                            </form>
-                        </div>
                         <div class="page_amount">
                             <p>Showing 1–9 of 21 results</p>
                         </div>
@@ -666,37 +568,65 @@
                      <!--shop toolbar end-->
                      
                      <div class="row shop_wrapper grid_list">
-    @foreach($items as $item)
-    <div class="col-12">
-        <div class="single_product">
-            <div class="product_thumb">
-                <a class="primary_img" href="product-details.html"><img src="{{ asset($item->image_url) }}" alt=""></a>
-                <div class="label_product">
-                    <span class="label_sale">Sale</span>
-                    <span class="label_new">New</span>
-                </div>
-                <div class="action_links">
-                    <ul>
-                        <li class="add_to_cart"><a href="cart.html" title="Add to cart"><span class="lnr lnr-cart"></span></a></li>
-                        <li class="quick_button"><a href="#" title="quick view"><span class="lnr lnr-magnifier"></span></a></li>
-                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
-                        <li class="compare"><a href="#" title="Add to Compare"><span class="lnr lnr-sync"></span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="product_content list_content">
-                <h4 class="product_name"><a href="product-details.html">{{ $item->name }}</a></h4>
-                <div class="price_box"> 
-                    <span class="current_price">${{ number_format($item->price, 2) }}</span>
-                </div>
-                <div class="product_desc">
-                    <p>{{ $item->description }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    @endforeach
+                     @foreach($items as $item)
+                            <div class="col-12">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                        <!-- Assuming $item->image_url and $item->secondary_image_url are set -->
+                                        <a class="primary_img" href="product-details.html"><img src="{{ asset($item->image_url) }}" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                            <span class="label_new">New</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                            <li class="add_to_cart">
+                                            <a href="javascript:void(0);" onclick="addToCart({ id: '{{ $item->item_id }}', name: '{{ $item->name }}', price: '{{ $item->price }}', image: '{{ $item->image_url }}' })" title="Add to cart">
+    <span class="lnr lnr-cart"></span>
+</a>
+
+                                            </li>
+                                                <li class="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box"><span class="lnr lnr-magnifier"></span></a></li>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span class="lnr lnr-heart"></span></a></li>
+                                                <li class="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span class="lnr lnr-sync"></span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content grid_content">
+                                        <h4 class="product_name"><a href="product-details.html">{{ $item->name }}</a></h4>
+                                        <p><a href="#">Fruits</a></p> <!-- Assuming the category is static; replace with dynamic if needed -->
+                                        <div class="price_box">
+                                            <span class="current_price">${{ number_format($item->price, 2) }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="product_content list_content">
+                                        <h4 class="product_name"><a href="product-details.html">{{ $item->name }}</a></h4>
+                                        <p><a href="#">Fruits</a></p>
+                                        <div class="price_box">
+                                            <span class="current_price">${{ number_format($item->price, 2) }}</span>
+                                        </div>
+                                        <div class="product_desc">
+                                            <p>{{ $item->description }}</p>
+                                        </div>
+                                        <div class="action_links list_action_right">
+                                            <ul>
+                                            <li class="add_to_cart">
+                                            <a href="javascript:void(0);" onclick="addToCart({ id: '{{ $item->item_id }}', name: '{{ $item->name }}', price: '{{ $item->price }}', image: '{{ $item->image_url }}' })" title="Add to cart">
+    <span class="lnr lnr-cart"></span>
+</a>
+<input type="hidden" id="csrfToken" value="{{ csrf_token() }}">
+                                            </li>
+                                               <li class="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span class="lnr lnr-magnifier"></span></a></li>
+                                                 <li class="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span class="lnr lnr-heart"></span></a></li> 
+                                                <li class="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span class="lnr lnr-sync"></span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
 </div>
+
 
 
 
@@ -722,96 +652,7 @@
     </div>
     <!--shop  area end-->
     
-  <!--footer area start-->
-    <footer class="footer_widgets footer_border">
-        <div class="container">
-            <div class="footer_top">
-                <div class="row">
-                        <div class="col-lg-4 col-md-12 col-sm-7">
-                            <div class="widgets_container contact_us">
-                               <div class="footer_logo">
-                                   <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
-                               </div>
-                               <p class="footer_desc">We are a team of designers and developers that create high quality eCommerce, WordPress, Shopify .</p>
-                                <p><span>Address:</span> 4710-4890 Breckinridge USA</p>
-                                <p><span>Email:</span> <a href="#">demo@hasthemes.com</a></p>
-                                <p><span>Call us:</span> <a href="tel:(08)23456789">(08) 23 456 789</a> </p>
-                            </div>          
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-5">
-                            <div class="widgets_container widget_menu">
-                                <h3>Information</h3>
-                                <div class="footer_menu">
-
-                                    <ul>
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="#">Delivery Information</a></li>
-                                        <li><a href="#"> Privacy Policy</a></li>
-                                        <li><a href="#"> Terms & Conditions</a></li>
-                                        <li><a href="contact.html"> Contact Us</a></li>
-                                        <li><a href="#"> Site Map</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-4">
-                            <div class="widgets_container widget_menu">
-                                <h3>Extras</h3>
-                                <div class="footer_menu">
-                                    <ul>
-                                        <li><a href="#">Brands</a></li>
-                                        <li><a href="#">  Gift Certificates</a></li>
-                                        <li><a href="#">Affiliate</a></li>
-                                        <li><a href="#">Specials</a></li>
-                                        <li><a href="#">Returns</a></li>
-                                        <li><a href="#"> Order History</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-8">
-                            <div class="widgets_container widget_newsletter">
-                                <h3>Sign up newsletter</h3>
-                                <p class="footer_desc">Get updates by subscribe our weekly newsletter</p>
-                                <div class="subscribe_form">
-                                    <form id="mc-form" class="mc-form footer-newsletter" >
-                                        <input id="mc-email" type="email" autocomplete="off" placeholder="Enter you email" />
-                                        <button id="mc-submit">Subscribe</button>
-                                    </form>
-                                    <!-- mailchimp-alerts Start -->
-                                    <div class="mailchimp-alerts text-centre">
-                                        <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                                        <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                                        <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                                    </div><!-- mailchimp-alerts end -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>     
-        <div class="footer_bottom">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-7">
-                        <div class="copyright_area">
-                            <p>Copyright  © 2021  <a href="#">Safira</a>  . All Rights Reserved.Design by  <a href="#">Safira</a></p>
-                        </div>
-                    </div>    
-                    <div class="col-lg-6 col-md-5">    
-                        <div class="footer_payment">
-                            <ul>
-                                <li><a href="#"><img src="assets/img/icon/paypal1.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/icon/paypal2.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/icon/paypal3.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/icon/paypal4.jpg" alt=""></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-             </div>   
-        </div>  
-    </footer>
+    @include('components.footer')
     <!--footer area end-->
     
     <!-- modal area start-->
@@ -932,6 +773,19 @@
 ============================================ -->
 <!--jquery min js-->
 <script src="assets/js/vendor/jquery-3.4.1.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+});
+</script>
+
+<script src="assets/js/cart.js"></script>
+
 <!--popper min js-->
 <script src="assets/js/popper.js"></script>
 <!--bootstrap min js-->
@@ -963,6 +817,8 @@
 
 <!-- Main JS -->
 <script src="assets/js/main.js"></script>
+
+
 
 
 

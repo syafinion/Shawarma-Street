@@ -127,7 +127,7 @@
                                             <a href="#">Shop Layouts</a>
                                             <ul class="sub-menu">
                                                 <li><a href="shop.html">shop</a></li>
-                                                <li><a href="shop-fullwidth.html">Full Width</a></li>
+                                                <li><a href="/restaurantmenu">Restaurant Menu</a></li>
                                                 <li><a href="shop-fullwidth-list.html">Full Width list</a></li>
                                                 <li><a href="shop-right-sidebar.html">Right Sidebar </a></li>
                                                 <li><a href="shop-right-sidebar-list.html"> Right Sidebar list</a></li>
@@ -336,7 +336,7 @@
                                                 <ul class="mega_menu_inner">
                                                     <li><a href="#">Shop Layouts</a>
                                                         <ul>
-                                                            <li><a href="shop-fullwidth.html">Full Width</a></li>
+                                                            <li><a href="/restaurantmenu">Restaurant Menu</a></li>
                                                             <li><a href="shop-fullwidth-list.html">Full Width list</a></li>
                                                             <li><a href="shop-right-sidebar.html">Right Sidebar </a></li>
                                                             <li><a href="shop-right-sidebar-list.html"> Right Sidebar list</a></li>
