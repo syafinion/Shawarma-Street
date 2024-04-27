@@ -5,9 +5,33 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 
 class CartController extends Controller
 {
+
+    public function getCart()
+{
+    $userId = Auth::id();
+    if (!$userId) {
+        return response()->json(['error' => 'User not authenticated'], 401);
+    }
+
+    // Updated SQL to include a join on the carts table
+    $sql = "SELECT ci.item_id, ci.quantity, CAST(i.price AS DECIMAL(10,2)) as price, i.name, i.image_url as image 
+            FROM cart_items ci 
+            JOIN items i ON ci.item_id = i.item_id 
+            JOIN carts c ON ci.cart_id = c.cart_id
+            WHERE c.user_id = ?";
+    $cartItems = DB::select($sql, [$userId]);  // Directly pass SQL string and parameters
+
+    return response()->json(['cartItems' => $cartItems]);
+}
+
+
+
+
     public function addToCart(Request $request)
 {
     $userId = Auth::id();
@@ -53,7 +77,17 @@ public function removeFromCart(Request $request)
     DB::beginTransaction();
     try {
         $cartId = DB::selectOne("SELECT cart_id FROM carts WHERE user_id = ?", [$userId])->cart_id;
-        DB::delete("DELETE FROM cart_items WHERE cart_id = ? AND item_id = ?", [$cartId, $request->item_id]);
+        if (!$cartId) {
+            DB::rollback();
+            return response()->json(['error' => 'Cart not found'], 404);
+        }
+
+        $deleteCount = DB::delete("DELETE FROM cart_items WHERE cart_id = ? AND item_id = ?", [$cartId, $request->item_id]);
+        if ($deleteCount == 0) {
+            DB::rollback();
+            return response()->json(['error' => 'No items deleted'], 404);
+        }
+
         DB::commit();
 
         $cartItems = DB::select("SELECT ci.item_id, ci.quantity, CAST(i.price AS DECIMAL(10,2)) as price, i.name, i.image_url as image FROM cart_items ci JOIN items i ON ci.item_id = i.item_id WHERE ci.cart_id = ?", [$cartId]);
@@ -64,6 +98,7 @@ public function removeFromCart(Request $request)
     }
 }
 
+
 public function updateItemQuantity(Request $request)
 {
     $userId = Auth::id();
@@ -71,12 +106,33 @@ public function updateItemQuantity(Request $request)
         return response()->json(['error' => 'User not authenticated'], 401);
     }
 
+    $newQuantity = (int) $request->quantity;
+    $itemId = $request->item_id;
+
     DB::beginTransaction();
     try {
         $cartId = DB::selectOne("SELECT cart_id FROM carts WHERE user_id = ?", [$userId])->cart_id;
-        DB::update("UPDATE cart_items SET quantity = ? WHERE cart_id = ? AND item_id = ?", [$request->quantity, $cartId, $request->item_id]);
+        if (!$cartId) {
+            DB::rollback();
+            return response()->json(['error' => 'Cart not found'], 404);
+        }
+
+        $item = DB::selectOne("SELECT quantity FROM cart_items WHERE cart_id = ? AND item_id = ?", [$cartId, $itemId]);
+        if (!$item) {
+            DB::rollback();
+            return response()->json(['error' => 'Item not found in cart'], 404);
+        }
+
+        // Set the quantity directly
+        if ($newQuantity < 0) {
+            DB::rollback();
+            return response()->json(['error' => 'Cannot set quantity below zero'], 400);
+        }
+
+        DB::update("UPDATE cart_items SET quantity = ? WHERE cart_id = ? AND item_id = ?", [$newQuantity, $cartId, $itemId]);
         DB::commit();
 
+        // Fetch updated cart items
         $cartItems = DB::select("SELECT ci.item_id, ci.quantity, CAST(i.price AS DECIMAL(10,2)) as price, i.name, i.image_url as image FROM cart_items ci JOIN items i ON ci.item_id = i.item_id WHERE ci.cart_id = ?", [$cartId]);
         return response()->json(['success' => 'Cart updated', 'cartItems' => $cartItems]);
     } catch (\Exception $e) {
@@ -84,5 +140,8 @@ public function updateItemQuantity(Request $request)
         return response()->json(['error' => $e->getMessage()], 500);
     }
 }
+
+
+
 
 }

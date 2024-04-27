@@ -19,12 +19,20 @@ Route::middleware(['web'])->group(function () {
         return view('checkout');
     });
 
+    Route::get('/myprofile', function () {
+        return view('myprofile');
+    });
+
     // Corrected: Only one route to handle /restaurantmenu
     Route::get('/restaurantmenu', [ItemController::class, 'showItems'])->name('restaurant-menu');
 
     Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
     Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
+    
     Route::post('/cart/update', [CartController::class, 'updateItemQuantity'])->name('cart.update');
+
+
     Route::get('/cart/show', [CartController::class, 'getCart'])->name('cart.show');
 
     // Authentication routes

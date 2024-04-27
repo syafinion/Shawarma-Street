@@ -4,10 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Safira - cart page</title>
+    <title>Safira - my account</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
     
@@ -41,11 +40,11 @@
     
     <!--modernizr min js here-->
     <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
+    
 
 </head>
 
 <body>
-
 
    <!--header area start-->
     
@@ -63,6 +62,33 @@
                     <div class="offcanvas_menu_wrapper">
                         <div class="canvas_close">
                             <a href="javascript:void(0)"><i class="icon-x"></i></a>  
+                        </div>
+                        <div class="language_currency">
+                            <ul>
+                                <li class="language"><a href="#"> Language <i class="icon-right ion-ios-arrow-down"></i></a>
+                                    <ul class="dropdown_language">
+                                        <li><a href="#">French</a></li>
+                                        <li><a href="#">Spanish</a></li>
+                                        <li><a href="#">Russian</a></li>
+                                    </ul>
+                                </li>
+                                <li class="currency"><a href="#"> Currency <i class="icon-right ion-ios-arrow-down"></i></a>
+                                    <ul class="dropdown_currency">
+                                        <li><a href="#">€ Euro</a></li>
+                                        <li><a href="#">£ Pound Sterling</a></li>
+                                        <li><a href="#">$ US Dollar</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="header_social text-right">
+                            <ul>
+                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                                <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                            </ul>
                         </div>
                         
                         <div class="call-support">
@@ -186,8 +212,35 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-md-6">
+                            <div class="language_currency">
+                                <ul>
+                                    <li class="language"><a href="#"> Language <i class="icon-right ion-ios-arrow-down"></i></a>
+                                        <ul class="dropdown_language">
+                                            <li><a href="#">French</a></li>
+                                            <li><a href="#">Spanish</a></li>
+                                            <li><a href="#">Russian</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="currency"><a href="#"> Currency <i class="icon-right ion-ios-arrow-down"></i></a>
+                                        <ul class="dropdown_currency">
+                                            <li><a href="#">€ Euro</a></li>
+                                            <li><a href="#">£ Pound Sterling</a></li>
+                                            <li><a href="#">$ US Dollar</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="col-lg-6">
+                            <div class="header_social text-right">
+                                <ul>
+                                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                                    <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
+                                    <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
+                                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                                    <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -213,6 +266,15 @@
                                                 <option value="5">Camera & Video </option>
                                                 <option value="6">Mornitors</option>
                                                 <option value="7">Tablets</option>
+                                                <option value="8">Laptops</option>
+                                                <option value="9">Handbags</option>
+                                                <option value="10">Headphone & Speaker</option>
+                                                <option value="11">Herbs & botanicals</option>
+                                                <option value="12">Vegetables</option>
+                                                <option value="13">Shop</option>
+                                                <option value="14">Laptops & Desktops</option>
+                                                <option value="15">Watchs</option>
+                                                <option value="16">Electronic</option>
                                             </select>                        
                                        </div>
                                         <div class="search_box">
@@ -224,26 +286,17 @@
                                 <div class="header_account_area">
                                     <div class="header_account_list register">
                                         <ul>
-                                        @if(Auth::check())
-                                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    @else
-                                        <li><a href="{{ route('login') }}">Login</a></li>
-                                        <li><span>/</span></li>
-                                        <li><a href="{{ route('register') }}">Register</a></li>
-                                    @endif
+                                            <li><a href="login.html">Register</a></li>
+                                            <li><span>/</span></li>
+                                            <li><a href="login.html">Login</a></li>
                                         </ul>
                                     </div>
-                                    <div class="header_account_list header_wishlist" >
-                                        <a href="wishlist.html"><span class="lnr lnr-heart" style="display: none;"></span><!-- <span class="item_count" style="display: none;">3</span>--> </a>
+                                    <div class="header_account_list header_wishlist">
+                                        <a href="wishlist.html"><span class="lnr lnr-heart"></span> <span class="item_count">3</span> </a>
                                     </div>
-
                                     <div class="header_account_list  mini_cart_wrapper">
                                        <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">2</span></a>
-                                        
-                                       <!--mini cart-->
+                                        <!--mini cart-->
                                         <div class="mini_cart">
                                             <div class="cart_gallery">
                                                 <div class="cart_close">
@@ -254,8 +307,42 @@
                                                 		<a href="javascript:void(0)"><i class="icon-x"></i></a>
                                                 	</div>
                                                 </div>
+                                                <div class="cart_item">
+                                                   <div class="cart_img">
+                                                       <a href="#"><img src="assets/img/s-product/product.jpg" alt=""></a>
+                                                   </div>
+                                                    <div class="cart_info">
+                                                        <a href="#">Primis In Faucibus</a>
+                                                        <p>1 x <span> $65.00 </span></p>    
+                                                    </div>
+                                                    <div class="cart_remove">
+                                                        <a href="#"><i class="icon-x"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="cart_item">
+                                                   <div class="cart_img">
+                                                       <a href="#"><img src="assets/img/s-product/product2.jpg" alt=""></a>
+                                                   </div>
+                                                    <div class="cart_info">
+                                                        <a href="#">Letraset Sheets</a>
+                                                        <p>1 x <span> $60.00 </span></p>    
+                                                    </div>
+                                                    <div class="cart_remove">
+                                                        <a href="#"><i class="icon-x"></i></a>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="mini_cart_table">
+                                                <div class="cart_table_border">
+                                                    <div class="cart_total">
+                                                        <span>Sub total:</span>
+                                                        <span class="price">$125.00</span>
+                                                    </div>
+                                                    <div class="cart_total mt-10">
+                                                        <span>total:</span>
+                                                        <span class="price">$125.00</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="mini_cart_footer">
                                                <div class="cart_button">
@@ -269,7 +356,6 @@
                                         </div>
                                         <!--mini cart end-->
                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -288,6 +374,18 @@
                                             <option value="2">Accessories</option>
                                             <option value="3">Accessories & More</option>
                                             <option value="4">Butters & Eggs</option>
+                                            <option value="5">Camera & Video </option>
+                                            <option value="6">Mornitors</option>
+                                            <option value="7">Tablets</option>
+                                            <option value="8">Laptops</option>
+                                            <option value="9">Handbags</option>
+                                            <option value="10">Headphone & Speaker</option>
+                                            <option value="11">Herbs & botanicals</option>
+                                            <option value="12">Vegetables</option>
+                                            <option value="13">Shop</option>
+                                            <option value="14">Laptops & Desktops</option>
+                                            <option value="15">Watchs</option>
+                                            <option value="16">Electronic</option>
                                         </select>                        
                                    </div>
                                     <div class="search_box">
@@ -314,6 +412,30 @@
                                                         <li><a href="">Sports</a></li>
                                                     </ul>
                                                 </li>
+                                                <li class="menu_item_children"><a href="#">Handbags</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="">Shoulder</a></li>
+                                                        <li><a href="">Satchels</a></li>
+                                                        <li><a href="">kids</a></li>
+                                                        <li><a href="">coats</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu_item_children"><a href="#">shoes</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="">Ankle Boots</a></li>
+                                                        <li><a href="">Clog sandals </a></li>
+                                                        <li><a href="">run</a></li>
+                                                        <li><a href="">Books</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu_item_children"><a href="#">Clothing</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="">Coats  Jackets </a></li>
+                                                        <li><a href="">Raincoats</a></li>
+                                                        <li><a href="">Jackets</a></li>
+                                                        <li><a href="">T-shirts</a></li>
+                                                    </ul>
+                                                </li>
                                             </ul>
                                         </li>
                                         <li class="menu_item_children"><a href="#">Fruits  <i class="fa fa-angle-right"></i></a>
@@ -324,6 +446,22 @@
                                                         <li><a href="">bedroom</a></li>
                                                         <li><a href=""> Home & Office</a></li>
                                                         <li><a href="">living room</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu_item_children"><a href="#">Lighting</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="">Ceiling Lighting</a></li>
+                                                        <li><a href="">Wall Lighting</a></li>
+                                                        <li><a href="">Outdoor Lighting</a></li>
+                                                        <li><a href="">Smart Lighting</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu_item_children"><a href="#">Sofa</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="">Fabric Sofas</a></li>
+                                                        <li><a href="">Leather Sofas</a></li>
+                                                        <li><a href="">Corner Sofas</a></li>
+                                                        <li><a href="">Sofa Beds</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -383,7 +521,6 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-
                             <!--main menu start-->
                             <div class="main_menu menu_position"> 
                                 <nav>  
@@ -393,6 +530,26 @@
                                                 <li><span>Organic</span>
                                                     <ul>
                                                         <li><a href="index.html">Organic 01</a></li>
+                                                        <li><a href="index-2.html">Organic 02</a></li>
+                                                        <li><a href="index-3.html">Organic 03</a></li>
+                                                        <li><a href="index-4.html">Organic 04</a></li>
+                                                        <li><a href="index-5.html">Organic 05</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><span>Fashion</span>
+                                                    <ul>
+                                                        <li><a href="index-8.html">Fashion 01</a></li>
+                                                        <li><a href="index-9.html">Fashion 02</a></li>
+                                                        <li><a href="#">Fashion 03 <span>(Comming Soon)</span></a></li>
+                                                        <li><a href="#">Fashion 04 <span>(Comming Soon)</span></a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><span>Cosmetic</span>
+                                                    <ul>
+                                                        <li><a href="index-6.html">Cosmetic 01</a></li>
+                                                        <li><a href="index-7.html">Cosmetic 02</a></li>
+                                                        <li><a href="#">Cosmetic 03 <span>(Comming Soon)</span></a> </li>
+                                                        <li><a href="#">Cosmetic 04 <span>(Comming Soon)</span></a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -407,6 +564,24 @@
                                                             <li><a href="shop-right-sidebar.html">Right Sidebar </a></li>
                                                             <li><a href="shop-right-sidebar-list.html"> Right Sidebar list</a></li>
                                                             <li><a href="shop-list.html">List View</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="#">other Pages</a>
+                                                        <ul>
+                                                            <li><a href="cart.html">cart</a></li>
+                                                            <li><a href="wishlist.html">Wishlist</a></li>
+                                                            <li><a href="checkout.html">Checkout</a></li>
+                                                            <li><a href="my-account.html">my account</a></li>
+                                                            <li><a href="404.html">Error 404</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="#">Product Types</a>
+                                                        <ul>
+                                                            <li><a href="product-details.html">product details</a></li>
+                                                            <li><a href="product-sidebar.html">product sidebar</a></li>
+                                                            <li><a href="product-grouped.html">product grouped</a></li>
+                                                            <li><a href="variable-product.html">product variable</a></li>
+
                                                         </ul>
                                                     </li>
                                                 </ul>
@@ -446,10 +621,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                       <h3>Cart</h3>
+                       <h3>My Account</h3>
                         <ul>
                             <li><a href="index.html">home</a></li>
-                            <li>Shopping Cart</li>
+                            <li>My account</li>
                         </ul>
                     </div>
                 </div>
@@ -457,78 +632,165 @@
         </div>         
     </div>
     <!--breadcrumbs area end-->
-    
-<!--shopping cart area start -->
-<div class="shopping_cart_area mt-70">
-    <div class="container">
-        <form action="#">
-            <div class="row">
-                <div class="col-12">
-                    <div class="table_desc">
-                        <div class="cart_page">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th class="product_remove">Delete</th>
-                                        <th class="product_thumb">Image</th>
-                                        <th class="product_name">Product</th>
-                                        <th class="product-price">Price</th>
-                                        <th class="product_quantity">Quantity</th>
-                                        <th class="product_total">Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="cart_items">
-                                    <!-- Cart items will be loaded here dynamically -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--coupon code area start-->
-            <div class="coupon_area">
+
+
+    <!-- my account start  -->
+    <section class="main_content_area">
+        <div class="container">   
+            <div class="account_dashboard">
                 <div class="row">
-                    <div class="coupon_code right">
-                        <h3>Cart Totals</h3>
-                        <div class="coupon_inner">
-                            <div class="cart_subtotal">
-                                <p>Subtotal</p>
-                                <p class="cart_amount" id="cart_subtotal">RM0.00</p>
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                        <!-- Nav tabs -->
+                        <div class="dashboard_tab_button">
+                            <ul role="tablist" class="nav flex-column dashboard-list" id="nav-tab">
+                                <li><a href="#dashboard" data-toggle="tab" class="nav-link active">Dashboard</a></li>
+                                <li> <a href="#orders" data-toggle="tab" class="nav-link">Orders</a></li>
+                                <li><a href="#downloads" data-toggle="tab" class="nav-link">Downloads</a></li>
+                                <li><a href="#address" data-toggle="tab" class="nav-link">Addresses</a></li>
+                                <li><a href="#account-details" data-toggle="tab" class="nav-link">Account details</a></li>
+                                <li><a href="login.html" class="nav-link">logout</a></li>
+                            </ul>
+                        </div>    
+                    </div>
+                    <div class="col-sm-12 col-md-9 col-lg-9">
+                        <!-- Tab panes -->
+                        <div class="tab-content dashboard_content">
+                            <div class="tab-pane fade show active" id="dashboard">
+                                <h3>Dashboard </h3>
+                                <p>From your account dashboard. you can easily check &amp; view your <a href="#">recent orders</a>, manage your <a href="#">shipping and billing addresses</a> and <a href="#">Edit your password and account details.</a></p>
                             </div>
-                            <div class="cart_subtotal ">
-                                <p>Shipping</p>
-                                <p class="cart_amount"><span>Flat Rate:</span> RM5.00</p>
+                            <div class="tab-pane fade" id="orders">
+                                <h3>Orders</h3>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Order</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                                <th>Total</th>
+                                                <th>Actions</th>	 	 	 	
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>May 10, 2018</td>
+                                                <td><span class="success">Completed</span></td>
+                                                <td>$25.00 for 1 item </td>
+                                                <td><a href="cart.html" class="view">view</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>May 10, 2018</td>
+                                                <td>Processing</td>
+                                                <td>$17.00 for 1 item </td>
+                                                <td><a href="cart.html" class="view">view</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <a href="#">Calculate shipping</a>
-                            <div class="cart_subtotal">
-                                <p>Total</p>
-                                <p class="cart_amount" id="cart_total">RM0.00</p>
+                            <div class="tab-pane fade" id="downloads">
+                                <h3>Downloads</h3>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Downloads</th>
+                                                <th>Expires</th>
+                                                <th>Download</th>	 	 	 	
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Shopnovilla - Free Real Estate PSD Template</td>
+                                                <td>May 10, 2018</td>
+                                                <td><span class="danger">Expired</span></td>
+                                                <td><a href="#" class="view">Click Here To Download Your File</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Organic - ecommerce html template</td>
+                                                <td>Sep 11, 2018</td>
+                                                <td>Never</td>
+                                                <td><a href="#" class="view">Click Here To Download Your File</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="checkout_btn">
-                                <a href="/checkout">Proceed to Checkout</a>
+                            <div class="tab-pane" id="address">
+                               <p>The following addresses will be used on the checkout page by default.</p>
+                                <h4 class="billing-address">Billing address</h4>
+                                <a href="#" class="view">Edit</a>
+                                <p><strong>Bobby Jackson</strong></p>
+                                <address>
+                                    House #15<br>
+                                    Road #1<br>
+                                    Block #C <br>
+                                    Banasree <br>
+                                    Dhaka <br>
+                                    1212
+                                </address>
+                                <p>Bangladesh</p>   
+                            </div>
+                            <div class="tab-pane fade" id="account-details">
+                                <h3>Account details </h3>
+                                <div class="login">
+                                    <div class="login_form_container">
+                                        <div class="account_login_form">
+                                            <form action="#">
+                                                <p>Already have an account? <a href="#">Log in instead!</a></p>
+                                                <div class="input-radio">
+                                                    <span class="custom-radio"><input type="radio" value="1" name="id_gender"> Mr.</span>
+                                                    <span class="custom-radio"><input type="radio" value="1" name="id_gender"> Mrs.</span>
+                                                </div> <br>
+                                                <label>First Name</label>
+                                                <input type="text" name="first-name">
+                                                <label>Last Name</label>
+                                                <input type="text" name="last-name">
+                                                <label>Email</label>
+                                                <input type="text" name="email-name">
+                                                <label>Password</label>
+                                                <input type="password" name="user-password">
+                                                <label>Birthdate</label>
+                                                <input type="text" placeholder="MM/DD/YYYY" value="" name="birthday">
+                                                <span class="example">
+                                                  (E.g.: 05/31/1970)
+                                                </span>
+                                                <br>
+                                                <span class="custom_checkbox">
+                                                    <input type="checkbox" value="1" name="optin">
+                                                    <label>Receive offers from our partners</label>
+                                                </span>
+                                                <br>
+                                                <span class="custom_checkbox">
+                                                    <input type="checkbox" value="1" name="newsletter">
+                                                    <label>Sign up for our newsletter<br><em>You may unsubscribe at any moment. For that purpose, please find our contact info in the legal notice.</em></label>
+                                                </span>
+                                                <div class="save_button primary_btn default_button">
+                                                   <button type="submit">Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
-    </div>
-</div>
-<!--shopping cart area end -->
-    
-    <!--footer area start-->
+            </div>  
+        </div>        	
+    </section>			
+    <!-- my account end   --> 
+
     @include('components.footer')
-    <!--footer area end-->
 
 <!-- JS
 ============================================ -->
 <!--jquery min js-->
 <script src="assets/js/vendor/jquery-3.4.1.min.js"></script>
-
-<script src="assets/js/cartPage.js"></script>
-
-
-
 <!--popper min js-->
 <script src="assets/js/popper.js"></script>
 <!--bootstrap min js-->
@@ -560,6 +822,7 @@
 
 <!-- Main JS -->
 <script src="assets/js/main.js"></script>
+
 
 
 

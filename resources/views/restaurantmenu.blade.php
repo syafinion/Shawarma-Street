@@ -253,15 +253,6 @@
                                             </div>
                                             <div class="mini_cart_table">
                                             </div>
-                                            <div class="mini_cart_footer">
-                                               <div class="cart_button">
-                                                    <a href="cart.html"><i class="fa fa-shopping-cart"></i> View cart</a>
-                                                </div>
-                                                <div class="cart_button">
-                                                    <a href="checkout.html"><i class="fa fa-sign-in"></i> Checkout</a>
-                                                </div>
-
-                                            </div>
                                         </div>
                                         <!--mini cart end-->
                                    </div>
