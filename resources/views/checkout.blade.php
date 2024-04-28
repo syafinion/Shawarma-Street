@@ -190,9 +190,17 @@
 
 <!-- Main JS -->
 <script src="assets/js/main.js"></script>
-
+<script src="assets/js/cart.js"></script>
 
 <script>
+    $(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+});
+
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('checkoutForm');
     const paymentMethodInputs = document.querySelectorAll('input[name="payment_method"]');

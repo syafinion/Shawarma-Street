@@ -268,6 +268,15 @@
 
 <script>
 
+$(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+});
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const addresses = document.querySelectorAll('.address-item');
 
