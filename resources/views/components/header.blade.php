@@ -153,17 +153,17 @@
                                 <div class="header_account_area">
                                     <div class="header_account_list register">
                                     <ul>
-                                    @if(Auth::check())
-                                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    @else
-                                        <li><a href="{{ route('login') }}">Login</a></li>
-                                        <li><span>/</span></li>
-                                        <li><a href="{{ route('register') }}">Register</a></li>
-                                    @endif
-                                </ul>
+                                        @if(Auth::check())
+                                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); clearCartAndLogout();">Logout</a></li>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        @else
+                                            <li><a href="{{ route('login') }}">Login</a></li>
+                                            <li><span>/</span></li>
+                                            <li><a href="{{ route('register') }}">Register</a></li>
+                                        @endif
+                                    </ul>
                                     </div>
                                     
 
@@ -277,8 +277,8 @@
                                         <li><a href="#">About Us <i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
                                                         <li><a href="/history">History</a></li>
-                                                        <li><a href="">Contact Us</a></li>
-                                                        <li><a href="">FAQ</a></li>
+                                                        <li><a href="/contact">Contact Us</a></li>
+                                                        <li><a href="/faq">FAQ</a></li>
                                             </ul>
                                         </li> 
                                     </ul>  

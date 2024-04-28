@@ -1,21 +1,19 @@
 @include('components.header')
 
     <!--breadcrumbs area start-->
-    <div class="breadcrumbs_area">
         <div class="container">   
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
                        <h3>Checkout</h3>
                         <ul>
-                            <li><a href="index.html">home</a></li>
+                            <li><a href="/">home</a></li>
                             <li>Checkout</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>         
-    </div>
     <!--breadcrumbs area end-->
     
    <!--Checkout page section-->
@@ -26,51 +24,76 @@
                 @csrf
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <h3>Billing Details</h3>
-                        <div class="row">
+                            <h3>Billing Details</h3>
+                            <div class="row">
+
                             <div class="col-lg-6 mb-20">
                                 <label>Name <span>*</span></label>
-                                <input type="text" name="name" value="{{ $user->name ?? '' }}" required>    
+                                <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $user->name ?? '') }}" required>
+                                <div class="invalid-feedback" style="display:none;"></div>
                             </div>
 
+
+                            <!-- Street Address -->
                             <div class="col-12 mb-20">
                                 <label>Street Address <span>*</span></label>
-                                <input type="text" name="street_address" value="{{ $address->address_line1 ?? '' }}" placeholder="House number and street name" required>     
+                                <input type="text" name="street_address" id="street_address" class="form-control" value="{{ old('street_address', $address->address_line1 ?? '') }}" placeholder="House number and street name" required>
+                                <div class="invalid-feedback" style="display:none;"></div>
                             </div>
+
+                            <!-- Apartment -->
                             <div class="col-12 mb-20">
-                                <input type="text" name="apartment" value="{{ $address->address_line2 ?? '' }}" placeholder="Apartment, suite, unit etc. (optional)">     
+                                <input type="text" name="apartment" id="apartment" class="form-control" value="{{ $address->address_line2 ?? '' }}" placeholder="Apartment, suite, unit etc. (optional)">
                             </div>
+
+                            <!-- Town / City -->
                             <div class="col-12 mb-20">
                                 <label>Town / City <span>*</span></label>
-                                <input type="text" name="city" value="{{ $address->city ?? '' }}" required>    
+                                <input type="text" name="city" id="city" class="form-control" value="{{ $address->city ?? '' }}" required>
+                                <div class="invalid-feedback" style="display:none;"></div>
                             </div>
+
+                            <!-- State / County -->
                             <div class="col-12 mb-20">
                                 <label>State / County <span>*</span></label>
-                                <input type="text" name="state" value="{{ $address->state ?? '' }}" required>    
+                                <input type="text" name="state" id="state" class="form-control" value="{{ $address->state ?? '' }}" required>
+                                <div class="invalid-feedback" style="display:none;"></div>
                             </div>
+
+                            <!-- Zip Code -->
                             <div class="col-12 mb-20">
                                 <label>Zip Code <span>*</span></label>
-                                <input type="text" name="zip_code" value="{{ $address->zip_code ?? '' }}" required>    
+                                <input type="text" name="zip_code" id="zip_code" class="form-control" value="{{ $address->zip_code ?? '' }}" required>
+                                <div class="invalid-feedback" style="display:none;"></div>
                             </div>
+
+                            <!-- Country -->
                             <div class="col-12 mb-20">
                                 <label>Country <span>*</span></label>
-                                <input type="text" name="country" value="{{ $address->country ?? '' }}" required>    
+                                <input type="text" name="country" id="country" class="form-control" value="{{ $address->country ?? '' }}" required>
+                                <div class="invalid-feedback" style="display:none;"></div>
                             </div>
- 
 
+                            <!-- Phone Number -->
                             <div class="col-lg-6 mb-20">
                                 <label>Phone <span>*</span></label>
-                                <input type="number" name="phone_number" value="{{ $user->phone_number ?? '' }}" required>  
-                            </div> 
+                                <input type="number" name="phone_number" id="phone_number" class="form-control" value="{{ $user->phone_number ?? '' }}" required>
+                                <div class="invalid-feedback" style="display:none;"></div>
+                            </div>
+
+                            <!-- Email Address -->
                             <div class="col-lg-6 mb-20">
                                 <label>Email Address <span>*</span></label>
-                                <input type="email" name="email" value="{{ $user->email ?? '' }}" required>
+                                <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $user->email ?? '') }}" required>
+                                <div class="invalid-feedback" style="display:none;"></div>
                             </div>
+
+                            <!-- Order Notes -->
                             <div class="col-12">
                                 <div class="order-notes">
                                     <label for="order_note">Order Notes</label>
-                                    <textarea id="order_note" name="order_notes" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
-                                </div>    
+                                    <textarea id="order_note" name="order_notes" class="form-control" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -117,30 +140,30 @@
                             </table>     
                         </div>
                         <div class="payment_method">
-                        <label>Payment Method:</label>
-                        <div class="panel-default">
-                            <input id="payment_counter" name="payment_method" type="radio" value="pay_at_counter" checked />
-                            <label for="payment_counter">Pay at Counter</label>
-                        </div>
-                        <div class="panel-default">
-                            <input id="payment_online" name="payment_method" type="radio" value="online_bank" />
-                            <label for="payment_online">Online Bank</label>
-                        </div>
-                        <div class="panel-default">
-                            <input id="payment_touchngo" name="payment_method" type="radio" value="touchngo" />
-                            <label for="payment_touchngo">Touch N Go</label>
-                        </div>
-                        <div class="panel-default">
-                            <input id="payment_affin" name="payment_method" type="radio" value="affin_bank" />
-                            <label for="payment_affin">Affin Bank</label>
-                        </div>
-                        <div class="panel-default">
-                            <input id="payment_maybank" name="payment_method" type="radio" value="maybank" />
-                            <label for="payment_maybank">Maybank</label>
-                        </div>
+                            <label>Payment Method:</label>
+                            <div class="panel-default">
+                                <input id="payment_counter" name="payment_method" type="radio" value="pay_at_counter" checked />
+                                <label for="payment_counter">Pay at Counter</label>
+                            </div>
+                            <div class="panel-default">
+                                <input id="payment_online" name="payment_method" type="radio" value="online_bank" />
+                                <label for="payment_online">Online Bank</label>
+                            </div>
+                            <div class="panel-default">
+                                <input id="payment_touchngo" name="payment_method" type="radio" value="touchngo" />
+                                <label for="payment_touchngo">Touch N Go</label>
+                            </div>
+                            <div class="panel-default">
+                                <input id="payment_affin" name="payment_method" type="radio" value="affin_bank" />
+                                <label for="payment_affin">Affin Bank</label>
+                            </div>
+                            <div class="panel-default">
+                                <input id="payment_maybank" name="payment_method" type="radio" value="maybank" />
+                                <label for="payment_maybank">Maybank</label>
+                            </div>
                     </div>
                         <div class="order_button">
-                            <button type="submit">Proceed to PayPal</button> 
+                            <button type="submit">Proceed to Payment</button> 
                         </div>    
                     </div> 
                 </div> 
@@ -194,42 +217,80 @@
 
 <script>
 $(document).ready(function() {
-    adjustShippingDisplay(); // Call on document ready to set up the initial display correctly
-
-    // Set up CSRF token for AJAX requests
+    // Initial setup and CSRF token configuration
+    adjustShippingDisplay();
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
 
-    // Event listener for form submission action changes
-    const form = document.getElementById('checkoutForm');
-    const paymentMethodInputs = document.querySelectorAll('input[name="payment_method"]');
-    paymentMethodInputs.forEach(input => {
-        input.addEventListener('change', function() {
-            form.action = "{{ route('submitOrder') }}";
-            form.method = "POST";
-        });
+    // Ensure labels are shown when payment method changes
+    $('input[name="payment_method"]').on('change', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        var form = $('#checkoutForm');
+        form.attr('action', "{{ route('submitOrder') }}");
+        form.attr('method', "POST");
+
+        // Explicitly show all labels in case they are hidden
+        $('label[for^="payment_"]').css('display', 'inline');
     });
 });
 
 function adjustShippingDisplay() {
-    const orderType = $('#display_order_type').text().trim();
-    const subtotalText = $('#subtotal_amount').text().trim().replace('RM', '');
-    const subtotal = parseFloat(subtotalText);
-    let shippingCost = 0;
+    var orderType = $('#display_order_type').text().trim();
+    var subtotal = parseFloat($('#subtotal_amount').text().trim().replace('RM', ''));
+    var shippingCost = 0;
 
     if (orderType === 'delivery') {
         $('.shipping_info').show();
-        shippingCost = 5.00; // Assuming RM5.00 is the shipping cost
+        shippingCost = 5.00;
     } else {
         $('.shipping_info').hide();
     }
 
-    const total = subtotal + shippingCost;
+    var total = subtotal + shippingCost;
     $('#order_total').text(`RM${total.toFixed(2)}`);
 }
+
+
+
+
+// Input validation on blur
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('input, textarea').forEach(input => {
+        input.addEventListener('blur', function() {
+            validateInput(input);
+        });
+    });
+});
+
+    function validateInput(input) {
+        const type = input.type;
+        const value = input.value.trim();
+        const feedbackElement = input.nextElementSibling; // Assumes error display div follows input
+
+        if (!value) {
+            feedbackElement.textContent = 'This field is required.';
+            feedbackElement.style.display = 'block';
+            input.classList.add('is-invalid');
+        } else if (type === 'email' && !validateEmail(value)) {
+            feedbackElement.textContent = 'Please enter a valid email address.';
+            feedbackElement.style.display = 'block';
+            input.classList.add('is-invalid');
+        } else {
+            feedbackElement.style.display = 'none';
+            input.classList.remove('is-invalid');
+        }
+    }
+
+    function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email.toLowerCase());
+}
+
+
 </script>
 
 

@@ -809,3 +809,8 @@
     
     
 })(jQuery);	
+
+function clearCartAndLogout() {
+    localStorage.removeItem('cart');  // Clear the cart from local storage
+    document.getElementById('logout-form').submit();  // Submit the logout form
+}

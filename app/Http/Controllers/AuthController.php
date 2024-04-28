@@ -20,27 +20,37 @@ class AuthController extends Controller
     }
 
     public function register(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6',
-            'phone_number' => 'nullable|max:15'
-        ]);
+{
+    // Validate the input fields
+    $validatedData = $request->validate([
+        'name' => 'required|max:255',
+        'email' => 'required|email|max:255',
+        'password' => 'required|min:6',
+        'phone_number' => 'nullable|max:15'
+    ]);
 
-        // Updated to use 'password' instead of 'password_hash'
-        $sql = "INSERT INTO users (name, email, password, phone_number, created_at, deleted_at) VALUES (?, ?, ?, ?, NOW(), NULL)";
-        $bindings = [
-            $validatedData['name'],
-            $validatedData['email'],
-            Hash::make($validatedData['password']),  // Hashing the password
-            $validatedData['phone_number']
-        ];
+    // Check if the email already exists in the database
+    $existingUser = DB::select('SELECT * FROM users WHERE email = ?', [$validatedData['email']]);
 
-        DB::insert($sql, $bindings);
-
-        return redirect('/login')->with('success', 'Registration successful. You can now login.');
+    // If the email exists, redirect back with an error message
+    if (!empty($existingUser)) {
+        return back()->withErrors(['email' => 'This email address is already registered.'])->withInput($request->except('password'));
     }
+
+    // If the email does not exist, proceed with registration
+    $sql = "INSERT INTO users (name, email, password, phone_number, created_at, deleted_at) VALUES (?, ?, ?, ?, NOW(), NULL)";
+    $bindings = [
+        $validatedData['name'],
+        $validatedData['email'],
+        Hash::make($validatedData['password']),
+        $validatedData['phone_number']
+    ];
+
+    DB::insert($sql, $bindings);
+
+    // Redirect to login page with a success message
+    return redirect('/login')->with('success', 'Registration successful. You can now login.');
+}
 
     public function login(Request $request)
     {

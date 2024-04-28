@@ -20,6 +20,16 @@ Route::middleware(['web'])->group(function () {
         return view('history', ['categories' => $categories]);
     });
 
+    Route::get('/faq', function () {
+        $categories = DB::table('categories')->get();
+        return view('faq', ['categories' => $categories]);
+    });
+
+    Route::get('/contact', function () {
+        $categories = DB::table('categories')->get();
+        return view('contact', ['categories' => $categories]);
+    });
+
     Route::get('/cart', function () {
         $categories = DB::table('categories')->get();
         return view('cart', ['categories' => $categories]);
@@ -65,6 +75,14 @@ Route::middleware(['web'])->group(function () {
     Route::get('/search', [ItemController::class, 'showItems'])->name('search');
 
     Route::post('/cart/update-order-type', [CartController::class, 'updateOrderType']);
+
+    Route::post('/submit-review', [UserController::class, 'submitReview'])->name('submitReview');
+
+    Route::get('/get-order-details/{orderId}', [UserController::class, 'getOrderDetails'])->name('get-order-details');
+
+    Route::post('/cancel-order', [UserController::class, 'cancelOrder'])->name('cancel-order');
+
+
 
 });
 

@@ -14,25 +14,30 @@
                         <div>
                             <label>Name <span>*</span></label>
                             <input type="text" name="name" id="name" required>
-                            <div id="name-error" class="form-error"></div>
+                            <div id="name-error" class="form-error">@error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>@enderror</div>
                         </div>
                         <div>
                             <label>Email address <span>*</span></label>
                             <input type="email" name="email" id="email" required>
-                            <div id="email-error" class="form-error"></div>
+                            <div id="email-error" class="form-error">@error('email')
+                    <div class="alert alert-danger">{{ $message }}</div>@enderror</div>
                         </div>
                         <div>
                             <label>Password <span>*</span></label>
                             <input type="password" name="password" id="password" required>
-                            <div id="password-error" class="form-error"></div>
+                            <div id="password-error" class="form-error">@error('password')
+                    <div class="alert alert-danger">{{ $message }}</div>@enderror</div>
                         </div>
                         <div>
                             <label>Phone Number</label>
                             <input type="text" name="phone_number" id="phone-number">
-                            <div id="phone-number-error" class="form-error"></div>
+                            <div id="phone-number-error" class="form-error">@error('phone_number')
+                    <div class="alert alert-danger">{{ $message }}</div>@enderror</div>
                         </div>
-                        <button type="submit">Register</button>
+                        <button type="submit" disabled>Register</button>
                     </form>
+
                 </div>
             </div>
             <!-- register area end -->

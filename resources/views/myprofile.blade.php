@@ -1,7 +1,6 @@
    
 @include('components.header')
     <!--breadcrumbs area start-->
-    <div class="breadcrumbs_area">
         <div class="container">   
             <div class="row">
                 <div class="col-12">
@@ -15,7 +14,6 @@
                 </div>
             </div>
         </div>         
-    </div>
     <!--breadcrumbs area end-->
 
 
@@ -32,7 +30,7 @@
                                 <li> <a href="#orders" data-toggle="tab" class="nav-link">Orders</a></li>
                                 <li><a href="#address" data-toggle="tab" class="nav-link">Addresses</a></li>
                                 <li><a href="#account-details" data-toggle="tab" class="nav-link">Account details</a></li>
-                                <li><a href="login.html" class="nav-link">logout</a></li>
+                                <li><a href="#" id="logout-link" class="nav-link">Logout</a></li>
                             </ul>
                         </div>    
                     </div>
@@ -52,38 +50,42 @@
                     @endif
 
                              <div class="tab-pane fade" id="orders">
-                            <h3>Orders</h3>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Order</th>
-                                            <th>Date</th>
-                                            <th>Status</th>
-                                            <th>Total</th>
-                                            <th>Actions</th>	 	 	 	
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($orders as $order)
+                             <h3>Orders</h3>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
                                             <tr>
-                                                <td>{{ $order->order_id }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($order->created_at)->format('M d, Y') }}</td>
-                                                <td><span class="status">{{ $order->status ?? 'Pending' }}</span></td>
-                                                <td>RM{{ number_format($order->total_price, 2) }} for {{ $order->item_count }} items</td>
-                                                <td>
-                                                    <a href="#" class="view">view</a>
-                                                    @if($order->status == 'pending')
-                                                        <button class="cancel-order" data-order-id="{{ $order->order_id }}">Cancel</button>
-                                                    @endif
-                                                </td>
+                                                <th>Order</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                                <th>Total</th>
+                                                <th>Items</th>
+                                                <th>Actions</th>
                                             </tr>
-                                        @empty
-                                            <tr><td colspan="5">No orders found.</td></tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
-                            </div>
+                                        </thead>
+                                        <tbody>
+                                            @forelse ($orders as $order)
+                                                <tr>
+                                                    <td>{{ $order->order_id }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($order->created_at)->format('M d, Y') }}</td>
+                                                    <td><span class="status">{{ $order->status }}</span></td>
+                                                    <td>RM{{ number_format($order->total_price, 2) }}</td>
+                                                    <td>{{ $order->item_count }}</td>
+                                                    <td>
+                                                    <a href="#" class="view" data-toggle="modal" data-target="#orderDetailsModal" data-order-id="{{ $order->order_id }}">View</a>
+
+                                                        @if($order->status == 'pending')
+                                                            <button class="cancel-order" data-order-id="{{ $order->order_id }}">Cancel</button>
+                                                        @endif
+                                                        <button class="review-order" data-order-id="{{ $order->order_id }}" data-toggle="modal" data-target="#reviewModal">Review</button>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr><td colspan="6">No orders found.</td></tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                         </div>
 
                         <div class="tab-pane" id="address">
@@ -229,6 +231,8 @@
 
     @include('components.footer')
 
+
+
 <!-- JS
 ============================================ -->
 <!--jquery min js-->
@@ -264,7 +268,10 @@
 
 <!-- Main JS -->
 <script src="assets/js/main.js"></script>
+
 <script src="assets/js/cart.js"></script>
+
+<script src="assets/js/reviews.js"></script>
 
 <script>
 
@@ -440,15 +447,152 @@ document.getElementById('phone-number').addEventListener('input', function(event
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    const orderSuccess = "{{ session('orderSuccess') }}";
+    // Check for the order success message from Laravel's session, correctly outputted in JavaScript
+    var orderSuccess = @json(session('orderSuccess'));
+
     if (orderSuccess) {
-        localStorage.removeItem('cart'); // Clear the cart from local storage
+        localStorage.removeItem('cart');  // Clear the cart from local storage
         console.log("Cart cleared due to successful order.");
-        // Optionally, refresh the page or update UI elements that display cart contents
+
+        // Assuming you have a function to update the cart display/UI
+        if (typeof updateCartUI === "function") {
+            updateCartUI();  // Update the UI to reflect an empty cart
+        }
     }
 });
 
+
 </script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+   <!-- Review Modal -->
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reviewModalLabel">Submit Your Review</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="reviewForm">
+                <div class="modal-body">
+                    <input type="hidden" id="orderId" name="orderId">
+                    <div class="form-group">
+                        <label for="rating">Rating:</label>
+                        <select class="form-control" id="rating" name="rating">
+                            <option value="1">1 - Poor</option>
+                            <option value="2">2 - Fair</option>
+                            <option value="3">3 - Good</option>
+                            <option value="4">4 - Very Good</option>
+                            <option value="5">5 - Excellent</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Comment:</label>
+                        <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Share your experience..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Review Submitted</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+                Thank you! Your review has been submitted successfully.
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Close</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Order Details Modal -->
+<div class="modal fade" id="orderDetailsModal" tabindex="-1" role="dialog" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orderDetailsModalLabel">Order Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Order Information -->
+                <h6>Order Information</h6>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <strong>Order ID:</strong> <span id="modalOrderId"></span><br>
+                        <strong>Date:</strong> <span id="modalOrderDate"></span><br>
+                        <strong>Status:</strong> <span id="modalOrderStatus"></span><br>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Total Price:</strong><span id="modalOrderTotal"></span><br>
+                        <strong>Customer Name:</strong> <span id="modalCustomerName"></span><br>
+                        <strong>Phone Number:</strong> <span id="modalPhoneNumber"></span><br>
+                    </div>
+                </div>
+
+                <!-- Delivery Address -->
+                <h6>Delivery Address</h6>
+                <p id="modalDeliveryAddress"></p>
+
+                <!-- Order Items -->
+                <h6>Items Ordered</h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody id="modalOrderItems">
+                            <!-- Order items will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Payment Information -->
+                <h6>Payment Information</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Payment Method:</strong> <span id="modalPaymentMethod"></span><br>
+                        <strong>Payment Status:</strong> <span id="modalPaymentStatus"></span><br>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Processed At:</strong> <span id="modalProcessedAt"></span><br>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 </body>
 

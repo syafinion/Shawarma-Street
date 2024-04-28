@@ -28,23 +28,28 @@
                     <h2>Login</h2>
                     <!-- Update the action to /login and method to POST -->
                     <form action="/login" method="POST" id="loginForm">
-                        @csrf
-                        <div>
-                            <label>Username or email <span>*</span></label>
-                            <input type="text" name="email" id="login-email" required>
-                            @error('email')
-                                <div id="login-email-error" class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div>
-                            <label>Password <span>*</span></label>
-                            <input type="password" name="password" id="login-password" required>
-                            @error('password')
-                                <div id="login-password-error" class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <button type="submit">Login</button>
-                    </form>
+                            @csrf
+                            <div>
+                                <label>Username or email <span>*</span></label>
+                                <input type="text" name="email" id="login-email" required>
+                                @error('email')
+                                    <div id="login-email-error" class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div>
+                                <label>Password <span>*</span></label>
+                                <input type="password" name="password" id="login-password" required>
+                                @error('password')
+                                    <div id="login-password-error" class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="success-message">
+                                @if(session('success'))
+                                    <div class="alert alert-success">{{ session('success') }}</div>
+                                @endif
+                            </div>
+                            <button type="submit">Login</button>
+                        </form>
 
                 </div>
             </div>

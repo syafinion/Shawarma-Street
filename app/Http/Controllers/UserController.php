@@ -89,11 +89,6 @@ public function checkPassword(Request $request)
     }
 }
 
-
-
-
-
-
     public function updateAddress(Request $request, $addressId)
     {
         $userId = Auth::id();
@@ -141,5 +136,99 @@ public function checkPassword(Request $request)
 
     return back()->with('success', 'Address added successfully.');
 }
+
+
+public function submitReview(Request $request)
+{
+    $validated = $request->validate([
+        'orderId' => 'required|integer',
+        'rating' => 'required|integer|min:1|max:5',
+        'comment' => 'required|string|max:1000',
+    ]);
+
+    // Prepare the query to insert the review into the database
+    $sql = "INSERT INTO reviews (order_id, user_id, rating, comment, created_at) VALUES (?, ?, ?, ?, ?)";
+
+    // Execute the query
+    DB::insert($sql, [
+        $validated['orderId'],
+        Auth::id(),  // Assuming you want to record which user submitted the review
+        $validated['rating'],
+        $validated['comment'],
+        now(),
+    ]);
+
+    return response()->json(['message' => 'Review submitted successfully!']);
+}
+
+
+public function getOrderDetails($orderId)
+{
+    // Log the incoming orderId to check its correctness
+    \Log::info("Fetching details for order ID: " . $orderId);
+
+    $order = DB::select("
+        SELECT o.order_id, o.user_id, o.created_at, COALESCE(o.order_status, 'Pending') AS status, 
+               o.total_price, o.customer_name, o.phone_number, 
+               o.delivery_address_line1, o.delivery_address_line2, o.delivery_city, 
+               o.delivery_state, o.delivery_zip_code, o.delivery_country,
+               p.payment_method, p.status AS payment_status, p.processed_at
+        FROM orders AS o
+        LEFT JOIN payments AS p ON o.order_id = p.order_id
+        WHERE o.order_id = ?
+    ", [$orderId]);
+
+    if (empty($order)) {
+        \Log::error("No order found with ID: " . $orderId);
+        return response()->json(['error' => 'Order not found'], 404);
+    }
+
+    $items = DB::select("
+        SELECT i.name, i.description, oi.quantity, oi.price, (oi.quantity * oi.price) AS subtotal
+        FROM order_items AS oi
+        JOIN items AS i ON oi.item_id = i.item_id
+        WHERE oi.order_id = ?
+    ", [$orderId]);
+
+    $response = [
+        'order' => $order[0],
+        'items' => $items
+    ];
+
+    return response()->json($response);
+}
+
+
+public function cancelOrder(Request $request)
+{
+    $orderId = $request->input('orderId');
+
+    DB::beginTransaction();
+    try {
+        // Delete related reviews
+        DB::delete("DELETE FROM reviews WHERE order_id = ?", [$orderId]);
+
+        // Delete related payments
+        DB::delete("DELETE FROM payments WHERE order_id = ?", [$orderId]);
+
+        // Delete related order items
+        DB::delete("DELETE FROM order_items WHERE order_id = ?", [$orderId]);
+
+        // Finally, delete the order itself
+        DB::delete("DELETE FROM orders WHERE order_id = ?", [$orderId]);
+
+        DB::commit();
+        return response()->json(['message' => 'Order and related records deleted successfully']);
+    } catch (\Exception $e) {
+        DB::rollback();
+        \Log::error("Failed to delete order with ID {$orderId}: " . $e->getMessage());
+        return response()->json(['error' => 'Failed to delete order'], 500);
+    }
+}
+
+
+
+
+
 
 }

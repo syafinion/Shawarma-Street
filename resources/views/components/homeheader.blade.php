@@ -161,8 +161,8 @@
                                                 <li><span>About Us</span>
                                                     <ul>
                                                         <li><a href="/history">History</a></li>
-                                                        <li><a href="">Contact Us</a></li>
-                                                        <li><a href="">FAQ</a></li>
+                                                        <li><a href="/contact">Contact Us</a></li>
+                                                        <li><a href="/faq">FAQ</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
