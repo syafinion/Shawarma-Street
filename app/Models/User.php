@@ -17,6 +17,7 @@ class User extends Authenticatable
      * @var string
      */
     protected $primaryKey = 'user_id';
+    protected $dates = ['birthday'];
 
     /**
      * The attributes that are mass assignable.

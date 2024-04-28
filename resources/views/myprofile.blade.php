@@ -4,9 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Safira - my account</title>
+    <title> Shawarma Street- my account</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
     
@@ -63,33 +65,6 @@
                         <div class="canvas_close">
                             <a href="javascript:void(0)"><i class="icon-x"></i></a>  
                         </div>
-                        <div class="language_currency">
-                            <ul>
-                                <li class="language"><a href="#"> Language <i class="icon-right ion-ios-arrow-down"></i></a>
-                                    <ul class="dropdown_language">
-                                        <li><a href="#">French</a></li>
-                                        <li><a href="#">Spanish</a></li>
-                                        <li><a href="#">Russian</a></li>
-                                    </ul>
-                                </li>
-                                <li class="currency"><a href="#"> Currency <i class="icon-right ion-ios-arrow-down"></i></a>
-                                    <ul class="dropdown_currency">
-                                        <li><a href="#">€ Euro</a></li>
-                                        <li><a href="#">£ Pound Sterling</a></li>
-                                        <li><a href="#">$ US Dollar</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="header_social text-right">
-                            <ul>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                            </ul>
-                        </div>
                         
                         <div class="call-support">
                             <p><a href="tel:(08)23456789">(08) 23 456 789</a> Customer Support</p>
@@ -103,10 +78,6 @@
                                             <a href="#">Home Organic</a>
                                             <ul class="sub-menu">
                                                 <li><a href="index.html">Organic 01</a></li>
-                                                <li><a href="index-2.html">Organic 02</a></li>
-                                                <li><a href="index-3.html">Organic 03</a></li>
-                                                <li><a href="index-4.html">Organic 04</a></li>
-                                                <li><a href="index-5.html">Organic 05</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
@@ -136,11 +107,6 @@
                                             <a href="#">Shop Layouts</a>
                                             <ul class="sub-menu">
                                                 <li><a href="shop.html">shop</a></li>
-                                                <li><a href="shop-fullwidth.html">Full Width</a></li>
-                                                <li><a href="shop-fullwidth-list.html">Full Width list</a></li>
-                                                <li><a href="shop-right-sidebar.html">Right Sidebar </a></li>
-                                                <li><a href="shop-right-sidebar-list.html"> Right Sidebar list</a></li>
-                                                <li><a href="shop-list.html">List View</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
@@ -163,16 +129,6 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">blog</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="blog-details.html">blog details</a></li>
-                                        <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                        <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                    </ul>
-
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="#">pages </a>
@@ -212,35 +168,8 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-md-6">
-                            <div class="language_currency">
-                                <ul>
-                                    <li class="language"><a href="#"> Language <i class="icon-right ion-ios-arrow-down"></i></a>
-                                        <ul class="dropdown_language">
-                                            <li><a href="#">French</a></li>
-                                            <li><a href="#">Spanish</a></li>
-                                            <li><a href="#">Russian</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="currency"><a href="#"> Currency <i class="icon-right ion-ios-arrow-down"></i></a>
-                                        <ul class="dropdown_currency">
-                                            <li><a href="#">€ Euro</a></li>
-                                            <li><a href="#">£ Pound Sterling</a></li>
-                                            <li><a href="#">$ US Dollar</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="header_social text-right">
-                                <ul>
-                                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -264,17 +193,6 @@
                                                 <option value="3">Accessories & More</option>
                                                 <option value="4">Butters & Eggs</option>
                                                 <option value="5">Camera & Video </option>
-                                                <option value="6">Mornitors</option>
-                                                <option value="7">Tablets</option>
-                                                <option value="8">Laptops</option>
-                                                <option value="9">Handbags</option>
-                                                <option value="10">Headphone & Speaker</option>
-                                                <option value="11">Herbs & botanicals</option>
-                                                <option value="12">Vegetables</option>
-                                                <option value="13">Shop</option>
-                                                <option value="14">Laptops & Desktops</option>
-                                                <option value="15">Watchs</option>
-                                                <option value="16">Electronic</option>
                                             </select>                        
                                        </div>
                                         <div class="search_box">
@@ -284,18 +202,26 @@
                                     </form>
                                 </div>
                                 <div class="header_account_area">
-                                    <div class="header_account_list register">
-                                        <ul>
-                                            <li><a href="login.html">Register</a></li>
-                                            <li><span>/</span></li>
-                                            <li><a href="login.html">Login</a></li>
-                                        </ul>
-                                    </div>
+                                <div class="header_account_list register">
+                                <ul>
+                                    @if(Auth::check())
+                                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    @else
+                                        <li><a href="{{ route('login') }}">Login</a></li>
+                                        <li><span>/</span></li>
+                                        <li><a href="{{ route('register') }}">Register</a></li>
+                                    @endif
+                                </ul>
+                            </div>
                                     <div class="header_account_list header_wishlist">
                                         <a href="wishlist.html"><span class="lnr lnr-heart"></span> <span class="item_count">3</span> </a>
                                     </div>
                                     <div class="header_account_list  mini_cart_wrapper">
                                        <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">2</span></a>
+
                                         <!--mini cart-->
                                         <div class="mini_cart">
                                             <div class="cart_gallery">
@@ -356,12 +282,14 @@
                                         </div>
                                         <!--mini cart end-->
                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="header_bottom sticky-header">
                 <div class="container">  
                     <div class="row align-items-center">
@@ -376,16 +304,6 @@
                                             <option value="4">Butters & Eggs</option>
                                             <option value="5">Camera & Video </option>
                                             <option value="6">Mornitors</option>
-                                            <option value="7">Tablets</option>
-                                            <option value="8">Laptops</option>
-                                            <option value="9">Handbags</option>
-                                            <option value="10">Headphone & Speaker</option>
-                                            <option value="11">Herbs & botanicals</option>
-                                            <option value="12">Vegetables</option>
-                                            <option value="13">Shop</option>
-                                            <option value="14">Laptops & Desktops</option>
-                                            <option value="15">Watchs</option>
-                                            <option value="16">Electronic</option>
                                         </select>                        
                                    </div>
                                     <div class="search_box">
@@ -520,6 +438,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-6">
                             <!--main menu start-->
                             <div class="main_menu menu_position"> 
@@ -615,6 +534,7 @@
     </header>
     <!--header area end-->
     
+
     <!--breadcrumbs area start-->
     <div class="breadcrumbs_area">
         <div class="container">   
@@ -645,7 +565,6 @@
                             <ul role="tablist" class="nav flex-column dashboard-list" id="nav-tab">
                                 <li><a href="#dashboard" data-toggle="tab" class="nav-link active">Dashboard</a></li>
                                 <li> <a href="#orders" data-toggle="tab" class="nav-link">Orders</a></li>
-                                <li><a href="#downloads" data-toggle="tab" class="nav-link">Downloads</a></li>
                                 <li><a href="#address" data-toggle="tab" class="nav-link">Addresses</a></li>
                                 <li><a href="#account-details" data-toggle="tab" class="nav-link">Account details</a></li>
                                 <li><a href="login.html" class="nav-link">logout</a></li>
@@ -655,128 +574,186 @@
                     <div class="col-sm-12 col-md-9 col-lg-9">
                         <!-- Tab panes -->
                         <div class="tab-content dashboard_content">
-                            <div class="tab-pane fade show active" id="dashboard">
-                                <h3>Dashboard </h3>
-                                <p>From your account dashboard. you can easily check &amp; view your <a href="#">recent orders</a>, manage your <a href="#">shipping and billing addresses</a> and <a href="#">Edit your password and account details.</a></p>
+                        @if(Auth::check())
+                        <div class="tab-pane fade show active" id="dashboard">
+                            <h3>Welcome, {{ Auth::user()->name }}</h3>
+                            <p>From your account dashboard, you can view your <a href="#orders" data-toggle="tab">recent orders</a>, manage your <a href="#address" data-toggle="tab">shipping and billing addresses</a> and <a href="#account-details" data-toggle="tab">edit your password and account details.</a></p>
+                        </div>
+                    @else
+                        <div class="tab-pane fade show active" id="dashboard">
+                            <h3>Welcome</h3>
+                            <p>You are not logged in. Please <a href="/login">login</a> to view your account details.</p>
+                        </div>
+                    @endif
+
+                             <div class="tab-pane fade" id="orders">
+                            <h3>Orders</h3>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Order</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Total</th>
+                                            <th>Actions</th>	 	 	 	
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($orders as $order)
+                                            <tr>
+                                                <td>{{ $order->order_id }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($order->created_at)->format('M d, Y') }}</td>
+                                                <td><span class="status">{{ $order->status ?? 'Pending' }}</span></td>
+                                                <td>${{ number_format($order->total_price, 2) }} for {{ $order->item_count }} items</td>
+                                                <td>
+                                                    <a href="#" class="view">view</a>
+                                                    @if($order->status == 'pending')
+                                                        <button class="cancel-order" data-order-id="{{ $order->order_id }}">Cancel</button>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr><td colspan="5">No orders found.</td></tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="tab-pane fade" id="orders">
-                                <h3>Orders</h3>
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Order</th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-                                                <th>Total</th>
-                                                <th>Actions</th>	 	 	 	
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>May 10, 2018</td>
-                                                <td><span class="success">Completed</span></td>
-                                                <td>$25.00 for 1 item </td>
-                                                <td><a href="cart.html" class="view">view</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>May 10, 2018</td>
-                                                <td>Processing</td>
-                                                <td>$17.00 for 1 item </td>
-                                                <td><a href="cart.html" class="view">view</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                        </div>
+
+                        <div class="tab-pane" id="address">
+                            <p>The following addresses will be used on the checkout page by default.</p>
+                            @if (empty($addresses))
+                                <!-- Form for adding a new address when no addresses exist -->
+                                <div class="address-item">
+                                    <div class="address-edit">
+                                        <form method="POST" action="{{ route('add-address') }}">
+                                            @csrf
+                                            <input type="text" name="address_line1" placeholder="Address Line 1" required>
+                                            <input type="text" name="address_line2" placeholder="Address Line 2">
+                                            <input type="text" name="city" placeholder="City" required>
+                                            <input type="text" name="state" placeholder="State" required>
+                                            <input type="text" name="zip_code" placeholder="Zip Code" required>
+                                            <input type="text" name="country" placeholder="Country" required>
+                                            <button type="submit">Add Address</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            @else
+                            @foreach ($addresses as $address)
+                            <div class="address-item" data-address-id="{{ $address->address_id }}">
+                                <!-- View mode -->
+                                <div class="address-view">
+                                    <h4 class="billing-address">Billing Address</h4>
+                                    <p><strong>{{ $address->user_name }}</strong></p> <!-- Updated from $address->name to $address->user_name -->
+                                    <address>
+                                        {{ $address->address_line1 }}
+                                        <br>
+                                        {{ $address->address_line2 ? $address->address_line2 . '' : '' }} <br> 
+                                        {{ $address->city }}, {{ $address->state }} {{ $address->zip_code }}
+                                        <br>
+                                        {{ $address->country }}
+                                    </address>
+                                    <button class="edit-address-btn">Edit</button>
+                                </div>
+                                <!-- Edit mode (hidden by default) -->
+                                <div class="address-edit" style="display: none;">
+                                    <form method="POST" action="{{ route('update-address', ['addressId' => $address->address_id]) }}">
+                                        @csrf
+                                        <input type="text" name="address_line1" value="{{ $address->address_line1 }}" required>
+                                        <input type="text" name="address_line2" value="{{ $address->address_line2 }}">
+                                        <input type="text" name="city" value="{{ $address->city }}" required>
+                                        <input type="text" name="state" value="{{ $address->state }}" required>
+                                        <input type="text" name="zip_code" value="{{ $address->zip_code }}" required>
+                                        <input type="text" name="country" value="{{ $address->country }}" required>
+                                        <button type="submit">Save</button>
+                                        <button type="button" class="cancel-edit-btn">Cancel</button>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="downloads">
-                                <h3>Downloads</h3>
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Product</th>
-                                                <th>Downloads</th>
-                                                <th>Expires</th>
-                                                <th>Download</th>	 	 	 	
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Shopnovilla - Free Real Estate PSD Template</td>
-                                                <td>May 10, 2018</td>
-                                                <td><span class="danger">Expired</span></td>
-                                                <td><a href="#" class="view">Click Here To Download Your File</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Organic - ecommerce html template</td>
-                                                <td>Sep 11, 2018</td>
-                                                <td>Never</td>
-                                                <td><a href="#" class="view">Click Here To Download Your File</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                        @endforeach
+                            @endif
+                        </div>
+
+
+                        {{-- Success Message --}}
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
                             </div>
-                            <div class="tab-pane" id="address">
-                               <p>The following addresses will be used on the checkout page by default.</p>
-                                <h4 class="billing-address">Billing address</h4>
-                                <a href="#" class="view">Edit</a>
-                                <p><strong>Bobby Jackson</strong></p>
-                                <address>
-                                    House #15<br>
-                                    Road #1<br>
-                                    Block #C <br>
-                                    Banasree <br>
-                                    Dhaka <br>
-                                    1212
-                                </address>
-                                <p>Bangladesh</p>   
-                            </div>
-                            <div class="tab-pane fade" id="account-details">
-                                <h3>Account details </h3>
-                                <div class="login">
-                                    <div class="login_form_container">
-                                        <div class="account_login_form">
-                                            <form action="#">
-                                                <p>Already have an account? <a href="#">Log in instead!</a></p>
-                                                <div class="input-radio">
-                                                    <span class="custom-radio"><input type="radio" value="1" name="id_gender"> Mr.</span>
-                                                    <span class="custom-radio"><input type="radio" value="1" name="id_gender"> Mrs.</span>
-                                                </div> <br>
-                                                <label>First Name</label>
-                                                <input type="text" name="first-name">
-                                                <label>Last Name</label>
-                                                <input type="text" name="last-name">
-                                                <label>Email</label>
-                                                <input type="text" name="email-name">
-                                                <label>Password</label>
-                                                <input type="password" name="user-password">
-                                                <label>Birthdate</label>
-                                                <input type="text" placeholder="MM/DD/YYYY" value="" name="birthday">
-                                                <span class="example">
-                                                  (E.g.: 05/31/1970)
-                                                </span>
-                                                <br>
-                                                <span class="custom_checkbox">
-                                                    <input type="checkbox" value="1" name="optin">
-                                                    <label>Receive offers from our partners</label>
-                                                </span>
-                                                <br>
-                                                <span class="custom_checkbox">
-                                                    <input type="checkbox" value="1" name="newsletter">
-                                                    <label>Sign up for our newsletter<br><em>You may unsubscribe at any moment. For that purpose, please find our contact info in the legal notice.</em></label>
-                                                </span>
-                                                <div class="save_button primary_btn default_button">
-                                                   <button type="submit">Save</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                        @endif
+
+                            
+                        {{-- Account Details Tab --}}
+                        <div class="tab-pane fade" id="account-details">
+                            <h3>Account details</h3>
+                            <div class="login">
+                                <div class="login_form_container">
+                                    <div class="account_login_form">
+                                        <form action="{{ route('update-account') }}" method="POST">
+                                            @csrf
+                                            <label>Username</label>
+                                            <input type="text" id="name" name="name" value="{{ old('name', Auth::user()->name) }}">
+                                            <div id="name-error"></div>
+                                            @error('name')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+
+                                            <label>Email</label>
+                                            <input type="email" id="email" name="email" value="{{ old('email', Auth::user()->email) }}">
+                                            <div id="email-error"></div>
+                                            @error('email')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+
+                                            {{-- Password Reset Section --}}
+                                            <div class="password_section">
+                                                <label>Current Password</label>
+                                                <input type="password" id="current-password" name="current-password">
+                                                <div id="current-password-error"></div>
+                                                @error('current-password')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+
+                                                <label>New Password</label>
+                                                <input type="password" id="new-password" name="new-password">
+                                                <div id="new-password-error"></div>
+                                                @error('new-password')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+
+                                                <label>Confirm New Password</label>
+                                                <input type="password" id="new-password_confirmation" name="new-password_confirmation">
+                                                <div id="new-password-confirmation-error"></div>
+                                                @error('new-password_confirmation')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <label>Phone Number</label>
+                                            <input type="text" id="phone-number" name="phone_number" value="{{ old('phone_number', Auth::user()->phone_number) }}">
+                                            <div id="phone-number-error"></div>
+                                            @error('phone_number')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+
+                                            <label>Birthdate</label>
+                                            <input type="date" id="birthday" name="birthday" value="{{ old('birthday', optional(Auth::user()->birthday)->toDateString()) }}">
+                                            <div id="birthday-error"></div>
+                                            @error('birthday')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                            <br>
+                                            <div class="save_button primary_btn default_button">
+                                                <button type="submit">Save</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -824,7 +801,172 @@
 <script src="assets/js/main.js"></script>
 
 
+<script>
 
+document.addEventListener('DOMContentLoaded', function() {
+    const addresses = document.querySelectorAll('.address-item');
+
+    addresses.forEach(address => {
+        const editBtn = address.querySelector('.edit-address-btn');
+        const cancelBtn = address.querySelector('.cancel-edit-btn');
+        const viewDiv = address.querySelector('.address-view');
+        const editDiv = address.querySelector('.address-edit');
+
+        editBtn.addEventListener('click', function() {
+            viewDiv.style.display = 'none';
+            editDiv.style.display = 'block';
+        });
+
+        cancelBtn.addEventListener('click', function() {
+            editDiv.style.display = 'none';
+            viewDiv.style.display = 'block';
+        });
+    });
+});
+
+
+
+
+// Disable the Save button by default
+document.querySelector('button[type="submit"]').disabled = true;
+
+// Function to enable/disable Save button based on validation status
+function toggleSaveButton() {
+    var errors = document.querySelectorAll('.alert-danger, .invalid');
+    var saveButton = document.querySelector('button[type="submit"]');
+    
+    // Enable the Save button only if there are no errors displayed
+    saveButton.disabled = errors.length !== 0;
+}
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    var currentPasswordInput = document.getElementById('current-password');
+
+    currentPasswordInput.addEventListener('input', function() {
+        var password = currentPasswordInput.value;
+        if (password.length > 0) {
+            fetch('/check-password', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json', // Make sure the server knows to send back JSON
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({ current_password: password })
+            })
+            .then(response => {
+                if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
+                return response.json();
+            })
+            .then(data => {
+                if (!data.valid) {
+                    document.getElementById('current-password-error').textContent = data.message;
+                    document.getElementById('current-password-error').style.color = 'red';
+                } else {
+                    document.getElementById('current-password-error').textContent = '';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('current-password-error').textContent = 'Error checking password.';
+                document.getElementById('current-password-error').style.color = 'red';
+            });
+        } else {
+            document.getElementById('current-password-error').textContent = 'Current password is required.';
+            document.getElementById('current-password-error').style.color = 'red';
+        }
+    });
+
+    // New Password validation - check minimum length
+    document.getElementById('new-password').addEventListener('input', function(event) {
+        if (event.target.value.length < 6) {
+            document.getElementById('new-password-error').textContent = 'Password must be at least 6 characters long.';
+            document.getElementById('new-password-error').style.color = 'red';
+        } else {
+            document.getElementById('new-password-error').textContent = '';
+            // Also validate confirmation password every time the new password changes
+            validatePasswordConfirmation();
+        }
+
+        toggleSaveButton(); 
+
+    });
+
+    // Confirm New Password validation - check if passwords match
+    document.getElementById('new-password_confirmation').addEventListener('input', validatePasswordConfirmation);
+
+    function validatePasswordConfirmation() {
+        const newPassword = document.getElementById('new-password').value;
+        const confirmPassword = document.getElementById('new-password_confirmation').value;
+        if (newPassword !== confirmPassword) {
+            document.getElementById('new-password-confirmation-error').textContent = 'Passwords do not match.';
+            document.getElementById('new-password-confirmation-error').style.color = 'red';
+        } else {
+            document.getElementById('new-password-confirmation-error').textContent = '';
+        }
+    }
+
+    toggleSaveButton(); 
+
+});
+
+
+
+document.getElementById('name').addEventListener('input', function(event) {
+    if (event.target.value.length < 3) {
+        document.getElementById('name-error').textContent = 'Username must be at least 3 characters long.';
+        document.getElementById('name-error').style.color = 'red';
+    } else {
+        document.getElementById('name-error').textContent = '';
+    }
+    toggleSaveButton(); 
+
+});
+
+document.getElementById('email').addEventListener('input', function(event) {
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/; // Simple email validation regex
+    if (!emailRegex.test(event.target.value)) {
+        document.getElementById('email-error').textContent = 'Enter a valid email address.';
+        document.getElementById('email-error').style.color = 'red';
+    } else {
+        document.getElementById('email-error').textContent = '';
+    }
+    toggleSaveButton(); 
+});
+
+// If Birthdate validation is needed
+document.getElementById('birthday').addEventListener('input', function(event) {
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // YYYY-MM-DD
+    if (!dateRegex.test(event.target.value)) {
+        document.getElementById('birthday-error').textContent = 'Enter a valid date in YYYY-MM-DD format.';
+        document.getElementById('birthday-error').style.color = 'red';
+    } else {
+        document.getElementById('birthday-error').textContent = '';
+    }
+    toggleSaveButton(); 
+});
+
+document.getElementById('phone-number').addEventListener('input', function(event) {
+    var phoneNumber = event.target.value;
+    // Check for non-numeric characters and replace them
+    phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
+    event.target.value = phoneNumber; // Update the input field with cleaned number
+
+    // Validation for length after cleaning the input
+    if (phoneNumber.length > 0 && (phoneNumber.length < 7 || phoneNumber.length > 15)) {
+        document.getElementById('phone-number-error').textContent = 'Phone number must be between 7 and 15 digits long.';
+        document.getElementById('phone-number-error').style.color = 'red';
+    } else {
+        document.getElementById('phone-number-error').textContent = '';
+    }
+    toggleSaveButton();
+});
+
+
+
+</script>
 
 </body>
 
