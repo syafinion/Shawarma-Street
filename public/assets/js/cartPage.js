@@ -9,6 +9,13 @@ $(document).ready(function() {
         }
     });
 
+    // Handle order type change and update the cart
+    $('input[name="order_type"]').change(function() {
+        const orderType = $(this).val();
+        updateOrderType(orderType);
+        updateCartTotal();
+    });
+
     // Delegate click event for removing items from the cart
     $(document).on('click', '.product_remove a', function() {
         const itemId = $(this).data('item-id');
@@ -22,6 +29,51 @@ $(document).ready(function() {
         updateItemQuantity(itemId, newQuantity);
     });
 });
+
+
+function updateOrderType(orderType) {
+    $.ajax({
+        url: '/cart/update-order-type',
+        type: 'POST',
+        data: {
+            order_type: orderType
+        },
+        success: function(response) {
+            console.log("Order type updated:", response);
+        },
+        error: function(error) {
+            console.error('Error updating order type:', error);
+        }
+    });
+}
+
+
+function updateCartTotal() {
+    const orderType = $('input[name="order_type"]:checked').val();
+    const shippingCost = orderType === 'delivery' ? 5.00 : 0;
+    const subtotal = parseFloat($('#cart_subtotal').text().replace('RM', ''));
+
+    $('#cart_total').text(`RM${(subtotal + shippingCost).toFixed(2)}`);
+
+    // Update the displayed shipping cost
+    if (orderType === 'delivery') {
+        $('.cart_subtotal.shipping').show();
+        $('.shipping_cost').text(`Flat Rate: RM${shippingCost.toFixed(2)}`);
+    } else {
+        $('.cart_subtotal.shipping').hide(); // Hide the shipping cost line
+    }
+}
+
+$(document).ready(function() {
+    // Handle order type change
+    $('input[name="order_type"]').change(function() {
+        updateCartTotal();
+    });
+
+    fetchAndDisplayCart();
+});
+
+
 
 function fetchAndDisplayCart() {
     $.ajax({
@@ -40,8 +92,8 @@ function fetchAndDisplayCart() {
 }
 
 function updateServerCartUI(cartItems) {
-    const cartBody = $('#cart_items');
     let subtotal = 0;
+    const cartBody = $('#cart_items');
     cartBody.empty(); // Clear existing cart items
 
     cartItems.forEach(item => {
@@ -62,7 +114,7 @@ function updateServerCartUI(cartItems) {
     });
 
     $('#cart_subtotal').text(`RM${subtotal.toFixed(2)}`);
-    $('#cart_total').text(`RM${(subtotal + 5).toFixed(2)}`); // Assuming a fixed shipping rate
+    updateCartTotal(); // Recalculate total based on the initial order type
 }
 
 function removeFromCart(itemId) {

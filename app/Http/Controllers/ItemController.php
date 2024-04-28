@@ -7,13 +7,37 @@ use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
-    public function showItems()
+    public function showItems(Request $request)
     {
-        // Raw SQL Query to fetch items
-        $sql = "SELECT * FROM items WHERE available_status = 1"; // assuming you only want to show available items
-        $items = DB::select($sql);
+        $query = "SELECT items.*, categories.name AS category_name FROM items 
+                  INNER JOIN categories ON items.category_id = categories.category_id 
+                  WHERE items.available_status = 1";
 
-        // Return view with items data
-        return view('restaurantmenu', ['items' => $items]);
+        if ($request->has('query')) {
+            $searchTerm = $request->input('query');
+            // Escape the search term to prevent SQL injection
+            $searchTerm = addslashes($searchTerm);
+            $query .= " AND items.name LIKE '%" . $searchTerm . "%'";
+        }
+
+        if ($request->has('category') && $request->category != '') {
+            $categoryId = $request->input('category');
+            // Cast the category ID to an integer to prevent SQL injection
+            $categoryId = (int) $categoryId;
+            $query .= " AND items.category_id = " . $categoryId;
+        }
+
+        // Execute the raw SQL query
+        $items = DB::select($query);
+        // Get all categories
+        $categories = DB::select('SELECT * FROM categories');
+
+        // Return view with items and categories data
+        return view('restaurantmenu', [
+            'items' => $items,
+            'categories' => $categories
+        ]);
     }
 }
+
+

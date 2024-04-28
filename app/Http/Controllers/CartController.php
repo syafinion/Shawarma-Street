@@ -12,60 +12,92 @@ class CartController extends Controller
 {
 
     public function getCart()
-{
-    $userId = Auth::id();
-    if (!$userId) {
-        return response()->json(['error' => 'User not authenticated'], 401);
+    {
+        $userId = Auth::id();
+        if (!$userId) {
+            return response()->json(['error' => 'User not authenticated'], 401);
+        }
+
+        $sql = "SELECT ci.item_id, ci.quantity, CAST(i.price AS DECIMAL(10,2)) as price, i.name, i.image_url as image, c.order_type 
+                FROM cart_items ci 
+                JOIN items i ON ci.item_id = i.item_id 
+                JOIN carts c ON ci.cart_id = c.cart_id
+                WHERE c.user_id = ?";
+        $cartItems = DB::select($sql, [$userId]);
+
+        return response()->json(['cartItems' => $cartItems]);
     }
-
-    // Updated SQL to include a join on the carts table
-    $sql = "SELECT ci.item_id, ci.quantity, CAST(i.price AS DECIMAL(10,2)) as price, i.name, i.image_url as image 
-            FROM cart_items ci 
-            JOIN items i ON ci.item_id = i.item_id 
-            JOIN carts c ON ci.cart_id = c.cart_id
-            WHERE c.user_id = ?";
-    $cartItems = DB::select($sql, [$userId]);  // Directly pass SQL string and parameters
-
-    return response()->json(['cartItems' => $cartItems]);
-}
 
 
 
 
     public function addToCart(Request $request)
+    {
+        $userId = Auth::id();
+        if (!$userId) {
+            return response()->json(['error' => 'User not authenticated'], 401);
+        }
+
+        $orderType = $request->input('order_type', 'dine_in');
+        DB::beginTransaction();
+        try {
+            $cartId = DB::selectOne("SELECT cart_id FROM carts WHERE user_id = ?", [$userId])->cart_id ?? null;
+
+            if (!$cartId) {
+                DB::insert("INSERT INTO carts (user_id, created_at, order_type) VALUES (?, NOW(), ?)", [$userId, $orderType]);
+                $cartId = DB::getPdo()->lastInsertId();
+            } else {
+                // Update the existing cart with the new order type if it is different.
+                DB::update("UPDATE carts SET order_type = ? WHERE cart_id = ?", [$orderType, $cartId]);
+            }
+
+            $existingItem = DB::selectOne("SELECT * FROM cart_items WHERE cart_id = ? AND item_id = ?", [$cartId, $request->item_id]);
+
+            if ($existingItem) {
+                DB::update("UPDATE cart_items SET quantity = quantity + 1 WHERE cart_item_id = ?", [$existingItem->cart_item_id]);
+            } else {
+                DB::insert("INSERT INTO cart_items (cart_id, item_id, quantity) VALUES (?, ?, 1)", [$cartId, $request->item_id]);
+            }
+
+            DB::commit();
+
+            $cartItems = DB::select("SELECT ci.item_id, ci.quantity, CAST(i.price AS DECIMAL(10,2)) as price, i.name, i.image_url as image FROM cart_items ci JOIN items i ON ci.item_id = i.item_id WHERE ci.cart_id = ?", [$cartId]);
+            return response()->json(['success' => 'Item added to cart', 'cartItems' => $cartItems]);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function updateOrderType(Request $request)
 {
     $userId = Auth::id();
     if (!$userId) {
         return response()->json(['error' => 'User not authenticated'], 401);
     }
 
-    DB::beginTransaction();
+    $orderType = $request->order_type;
+
     try {
-        $cartId = DB::selectOne("SELECT cart_id FROM carts WHERE user_id = ?", [$userId])->cart_id ?? null;
+        $cart = DB::table('carts')
+                  ->where('user_id', $userId)
+                  ->first();
 
-        if (!$cartId) {
-            DB::insert("INSERT INTO carts (user_id, created_at) VALUES (?, NOW())", [$userId]);
-            $cartId = DB::getPdo()->lastInsertId();
+        if (!$cart) {
+            return response()->json(['error' => 'Cart not found'], 404);
         }
 
-        $existingItem = DB::selectOne("SELECT * FROM cart_items WHERE cart_id = ? AND item_id = ?", [$cartId, $request->item_id]);
+        DB::table('carts')
+          ->where('cart_id', $cart->cart_id)
+          ->update(['order_type' => $orderType]);
 
-        if ($existingItem) {
-            DB::update("UPDATE cart_items SET quantity = quantity + 1 WHERE cart_item_id = ?", [$existingItem->cart_item_id]);
-        } else {
-            DB::insert("INSERT INTO cart_items (cart_id, item_id, quantity) VALUES (?, ?, 1)", [$cartId, $request->item_id]);
-        }
-
-        DB::commit();
-
-        // Fetch updated cart items with price casted as decimal
-        $cartItems = DB::select("SELECT ci.item_id, ci.quantity, CAST(i.price AS DECIMAL(10,2)) as price, i.name, i.image_url as image FROM cart_items ci JOIN items i ON ci.item_id = i.item_id WHERE ci.cart_id = ?", [$cartId]);
-        return response()->json(['success' => 'Item added to cart', 'cartItems' => $cartItems]);
+        return response()->json(['success' => 'Order type updated to ' . $orderType]);
     } catch (\Exception $e) {
-        DB::rollback();
         return response()->json(['error' => $e->getMessage()], 500);
     }
 }
+
+
 
 public function removeFromCart(Request $request)
 {

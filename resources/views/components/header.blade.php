@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Shawarma Restaurant Menu</title>
+    <title>Shawarma Street</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -70,105 +70,35 @@
                         </div>
                         <div id="menu" class="text-left ">
                             <ul class="offcanvas_main_menu">
+                            <li class="menu-item-has-children">
+                                    <a href="/">Promotions</a>
+                                </li>
                                 <li class="menu-item-has-children active">
-                                    <a href="#">Home</a>
+                                    <a href="#">Menu</a>
                                     <ul class="sub-menu">
                                         <li class="menu-item-has-children">
-                                            <a href="#">Home Organic</a>
+                                            <a href="#">Menu</a>
                                             <ul class="sub-menu">
-                                                <li><a href="index.html">Organic 01</a></li>
-                                                <li><a href="index-2.html">Organic 02</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">Home Fashion</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="index-8.html">Fashion 01</a></li>
-                                                <li><a href="index-9.html">Fashion 02</a></li>
-                                                <li><a href="#">Fashion 03 <span>(Comming Soon)</span></a></li>
-                                                <li><a href="#">Fashion 04 <span>(Comming Soon)</span></a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">Home Cosmetic</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="index-6.html">Cosmetic 01</a></li>
-                                                <li><a href="index-7.html">Cosmetic 02</a></li>
-                                                <li><a href="#">Cosmetic 03 <span>(Comming Soon)</span></a> </li>
-                                                <li><a href="#">Cosmetic 04 <span>(Comming Soon)</span></a></li>
+                                                        <li><a href="index-2.html">Shawarma</a></li>
+                                                        <li><a href="index-3.html">Rice</a></li>
+                                                        <li><a href="index-4.html">Add ons</a></li>
+                                                        <li><a href="index-5.html">Drinks & Desserts</a></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="#">Shop</a>
+                                    <a href="#">About Us </a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item-has-children">
-                                            <a href="#">Shop Layouts</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="shop.html">shop</a></li>
-                                                <li><a href="shop-fullwidth.html">Full Width</a></li>
-                                                <li><a href="shop-fullwidth-list.html">Full Width list</a></li>
-                                                <li><a href="shop-right-sidebar.html">Right Sidebar </a></li>
-                                                <li><a href="shop-right-sidebar-list.html"> Right Sidebar list</a></li>
-                                                <li><a href="shop-list.html">List View</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">other Pages</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="cart.html">cart</a></li>
-                                                <li><a href="wishlist.html">Wishlist</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li>
-                                                <li><a href="my-account.html">my account</a></li>
-                                                <li><a href="404.html">Error 404</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">Product Types</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="product-details.html">product details</a></li>
-                                                <li><a href="product-sidebar.html">product sidebar</a></li>
-                                                <li><a href="product-grouped.html">product grouped</a></li>
-                                                <li><a href="variable-product.html">product variable</a></li>
-                                            </ul>
-                                        </li>
+                                            <li><a href="">History</a></li>
+                                            <li><a href="">Contact Us</a></li>
+                                            <li><a href="">FAQ</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="#">blog</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="blog-details.html">blog details</a></li>
-                                        <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                        <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                    </ul>
-
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">pages </a>
-                                    <ul class="sub-menu">
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="services.html">services</a></li>
-                                        <li><a href="faq.html">Frequently Questions</a></li>
-                                        <li><a href="contact.html">contact</a></li>
-                                        <li><a href="login.html">login</a></li>
-                                        <li><a href="404.html">Error 404</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="my-account.html">my account</a>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="about.html">about Us</a>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="contact.html"> Contact Us</a> 
+                                    <a href="/myprofile">My Account</a>
                                 </li>
                             </ul>
-                        </div>
-                        <div class="offcanvas_footer">
-                            <span><a href="#"><i class="fa fa-envelope-o"></i> info@yourdomain.com</a></span>
                         </div>
                     </div>
                 </div>
@@ -200,23 +130,25 @@
                         <div class="col-lg-10 col-md-6 col-sm-7 col-8">
                             <div class="header_right_info">
 
-                            <!-- SEARCH FUNCTION -->
-                                <div class="search_container mobail_s_none">
-                                   <form action="#">
-                                       <div class="hover_category">
-                                            <select class="select_option" name="select" id="categori2">
-                                                <option selected value="1">Select a categories</option>
-                                                <option value="2">Accessories</option>
-                                                <option value="3">Accessories & More</option>
-                                            </select>                        
-                                       </div>
-                                        <div class="search_box">
-                                            <input placeholder="Search product..." type="text">
-                                             <button type="submit"><span class="lnr lnr-magnifier"></span></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            <!-- SEARCH FUNCTION -->
+                            <!-- SEARCH FUNCTION DESKTOP-->
+                            <div class="search_container mobail_s_none">
+                                <form action="/search" method="GET">
+                                    <div class="hover_category">
+                                        <select class="select_option" name="category" id="categori1"> <!-- Note: Ensure unique IDs -->
+                                            <option value="">Select a category</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->category_id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="search_box">
+                                        <input name="query" placeholder="Search product..." type="text">
+                                        <button type="submit"><span class="lnr lnr-magnifier"></span></button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- SEARCH FUNCTION DESKTOP-->
+
 
                                 <div class="header_account_area">
                                     <div class="header_account_list register">
@@ -269,142 +201,90 @@
                 <div class="container">  
                     <div class="row align-items-center">
 
-                        <!-- SEARCH MOBILE -->
-                       <div class="col-12 col-md-6 mobail_s_block">
+                       <!-- SEARCH FUNCTION MOBILE -->
+                        <div class="col-12 col-md-6 mobail_s_block">
                             <div class="search_container">
-                               <form action="#">
-                                   <div class="hover_category">
-                                        <select class="select_option" name="select" id="categori2">
-                                            <option selected value="1">Select a categories</option>
-                                            <option value="2">Accessories</option>
-                                        </select>                        
-                                   </div>
+                                <form action="/search" method="GET">
+                                    <div class="hover_category">
+                                        <select class="select_option" name="category" id="categori2">
+                                            <option value="">Select a category</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->category_id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="search_box">
-                                        <input placeholder="Search product..." type="text">
-                                         <button type="submit"><span class="lnr lnr-magnifier"></span></button>
+                                        <input name="query" placeholder="Search product..." type="text">
+                                        <button type="submit"><span class="lnr lnr-magnifier"></span></button>
                                     </div>
                                 </form>
                             </div>
-
-
                         </div>
-                        <!-- SEARCH MOBILE -->
+                        <!-- SEARCH FUNCTION MOBILE -->
+
+
 
                         <div class="col-lg-3 col-md-6">
                             <div class="categories_menu">
                                 <div class="categories_title">
-                                    <h2 class="categori_toggle">All Cattegories</h2>
+                                    <h2 class="categori_toggle">All Categories</h2>
                                 </div>
                                 <div class="categories_menu_toggle">
                                     <ul>
-                                        <li class="menu_item_children"><a href="#">Vegetables<i class="fa fa-angle-right"></i></a>
-                                            <ul class="categories_mega_menu">
-                                                <li class="menu_item_children"><a href="#">Dresses</a>
-                                                    <ul class="categorie_sub_menu">
-                                                        <li><a href="">Sweater</a></li>
-                                                        <li><a href="">Evening</a></li>
-                                                        <li><a href="">Day</a></li>
-                                                        <li><a href="">Sports</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
+                                        <li>
+                                            <!-- Link to show all items without any category filter -->
+                                            <a href="{{ route('restaurant-menu') }}">All Categories</a>
                                         </li>
-                                        <li class="menu_item_children"><a href="#">Fruits  <i class="fa fa-angle-right"></i></a>
-                                            <ul class="categories_mega_menu column_3">
-                                                <li class="menu_item_children"><a href="#">Chair</a>
-                                                    <ul class="categorie_sub_menu">
-                                                        <li><a href="">Dining room</a></li>
-                                                        <li><a href="">bedroom</a></li>
-                                                        <li><a href=""> Home & Office</a></li>
-                                                        <li><a href="">living room</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu_item_children"><a href="#"> Salads<i class="fa fa-angle-right"></i></a>
-                                            <ul class="categories_mega_menu column_2">
-                                                <li class="menu_item_children"><a href="#">Brake Tools</a>
-                                                    <ul class="categorie_sub_menu">
-                                                        <li><a href="">Driveshafts</a></li>
-                                                        <li><a href="">Spools</a></li>
-                                                        <li><a href="">Diesel </a></li>
-                                                        <li><a href="">Gasoline</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu_item_children"><a href="#"> Fish & Seafood <i class="fa fa-angle-right"></i></a>
-                                            <ul class="categories_mega_menu column_2">
-                                                <li class="menu_item_children"><a href="#">Check Trousers</a>
-                                                    <ul class="categorie_sub_menu">
-                                                        <li><a href="">Building</a></li>
-                                                        <li><a href="">Electronics</a></li>
-                                                        <li><a href="">action figures </a></li>
-                                                        <li><a href="">specialty & boutique toy</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#"> Fresh Meat</a></li>
-                                        <li class="hidden"><a href="shop.html">New Sofas</a></li>
-                                        <li class="hidden"><a href="shop.html">Sleight Sofas</a></li>
-                                        <li><a href="#" id="more-btn"><i class="fa fa-plus" aria-hidden="true"></i> More Categories</a></li>
+                                        @foreach($categories as $category)
+                                            <li>
+                                                <a href="{{ route('restaurant-menu', ['category' => $category->category_id]) }}">
+                                                    {{ $category->name }}
+                                                </a>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
                         </div>
+
+
+
+
+
                         <div class="col-lg-6">
                             <!--main menu start-->
                             <div class="main_menu menu_position"> 
                                 <nav>  
                                     <ul>
-                                        <li><a href="index.html">home<i class="fa fa-angle-down"></i></a>
+                                    <li class="menu-item-has-children">
+                                    <a href="/">Promotions</a>
+                                        </li>
+                                        <li><a href="index.html">Menu<i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu home_sub_menu d-flex">
-                                                <li><span>Organic</span>
+                                                <li><span>Menu</span>
                                                     <ul>
-                                                        <li><a href="index.html">Organic 01</a></li>
-                                                        <li><a href="index-2.html">Organic 02</a></li>
-                                                        <li><a href="index-3.html">Organic 03</a></li>
-                                                        <li><a href="index-4.html">Organic 04</a></li>
-                                                        <li><a href="index-5.html">Organic 05</a></li>
+                                                        <li><a href="">Shawarma</a></li>
+                                                        <li><a href="">Rice</a></li>
+                                                        <li><a href="">Add ons</a></li>
+                                                        <li><a href="">Drinks & Desserts</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="mega_items"><a class="active" href="shop.html">shop<i class="fa fa-angle-down"></i></a> 
-                                            <div class="mega_menu">
-                                                <ul class="mega_menu_inner">
-                                                    <li><a href="#">Shop Layouts</a>
-                                                        <ul>
-                                                            <li><a href="shop-fullwidth.html">Full Width</a></li>
-                                                            <li><a href="shop-fullwidth-list.html">Full Width list</a></li>
-                                                            <li><a href="shop-right-sidebar.html">Right Sidebar </a></li>
-                                                            <li><a href="shop-right-sidebar-list.html"> Right Sidebar list</a></li>
-                                                            <li><a href="shop-list.html">List View</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                        <li class="menu-item-has-children">
+                                    <a href="/myprofile">My Account</a>
                                         </li>
-                                        <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
+                                        <li><a href="#">About Us <i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="faq.html">Frequently Questions</a></li>
-                                                <li><a href="contact.html">contact</a></li>
-                                                <li><a href="login.html">login</a></li>
-                                                <li><a href="404.html">Error 404</a></li>
+                                                        <li><a href="">History</a></li>
+                                                        <li><a href="">Contact Us</a></li>
+                                                        <li><a href="">FAQ</a></li>
                                             </ul>
                                         </li> 
-                                        <li><a href="contact.html"> Contact Us</a></li>
                                     </ul>  
                                 </nav> 
                             </div>
                             <!--main menu end-->
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="call-support">
-                                <p><a href="tel:(08)23456789">(08) 23 456 789</a> Customer Support</p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -413,21 +293,3 @@
     </header>
     <!--header area end-->
 
-        
-    <!--breadcrumbs area start-->
-    <div class="breadcrumbs_area">
-        <div class="container">   
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb_content">
-                        <h3>Shop</h3>
-                        <ul>
-                            <li><a href="index.html">home</a></li>
-                            <li>shop</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>         
-    </div>
-    <!--breadcrumbs area end-->

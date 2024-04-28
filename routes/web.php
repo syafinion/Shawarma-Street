@@ -7,14 +7,22 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
+use Illuminate\Support\Facades\DB;
 
 Route::middleware(['web'])->group(function () {
     Route::get('/', function () {
-        return view('home');
+        $categories = DB::table('categories')->get();
+        return view('home', ['categories' => $categories]);
     });
 
     Route::get('/cart', function () {
-        return view('cart');
+        $categories = DB::table('categories')->get();
+        return view('cart', ['categories' => $categories]);
+    });
+
+    Route::get('/404', function () {
+        $categories = DB::table('categories')->get();
+        return view('404', ['categories' => $categories]);
     });
 
     Route::get('/checkout', [OrderController::class, 'showCheckout'])->name('checkout');
@@ -43,13 +51,16 @@ Route::middleware(['web'])->group(function () {
     
     Route::post('/submit-order', [OrderController::class, 'submitOrder'])->name('submitOrder');
 
-
     // Payment Page (display form, should be GET)
     Route::get('/payment-details', [PaymentController::class, 'showPaymentForm'])->name('paymentPage');
 
     // Process Payment (process the form, should be POST)
     Route::post('/process-payment', [PaymentController::class, 'processPayment'])->name('processPayment');
     
+    Route::get('/search', [ItemController::class, 'showItems'])->name('search');
+
+    Route::post('/cart/update-order-type', [CartController::class, 'updateOrderType']);
 
 });
+
 
