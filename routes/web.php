@@ -15,6 +15,11 @@ Route::middleware(['web'])->group(function () {
         return view('home', ['categories' => $categories]);
     });
 
+    Route::get('/history', function () {
+        $categories = DB::table('categories')->get();
+        return view('history', ['categories' => $categories]);
+    });
+
     Route::get('/cart', function () {
         $categories = DB::table('categories')->get();
         return view('cart', ['categories' => $categories]);

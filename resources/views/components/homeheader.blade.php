@@ -157,7 +157,7 @@
                                             <ul class="sub_menu home_sub_menu d-flex">
                                                 <li><span>About Us</span>
                                                     <ul>
-                                                        <li><a href="">History</a></li>
+                                                        <li><a href="/history">History</a></li>
                                                         <li><a href="">Contact Us</a></li>
                                                         <li><a href="">FAQ</a></li>
                                                     </ul>

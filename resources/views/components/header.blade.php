@@ -276,7 +276,7 @@
                                         </li>
                                         <li><a href="#">About Us <i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
-                                                        <li><a href="">History</a></li>
+                                                        <li><a href="/history">History</a></li>
                                                         <li><a href="">Contact Us</a></li>
                                                         <li><a href="">FAQ</a></li>
                                             </ul>
