@@ -9,27 +9,29 @@
                 <div class="account_form register">
                     <h2>Register</h2>
                     <!-- Note the action points to the /register route and method is POST -->
-                    <form action="/register" method="POST">
-                        @csrf <!-- CSRF Token for Laravel form submission security -->
-                        <p>
+                    <form action="/register" method="POST" id="registerForm">
+                        @csrf
+                        <div>
                             <label>Name <span>*</span></label>
-                            <input type="text" name="name" required>
-                        </p>
-                        <p>
-                            <label>Email address <span>*</span></label>
-                            <input type="email" name="email" required>
-                        </p>
-                        <p>
-                            <label>Password <span>*</span></label>
-                            <input type="password" name="password" required>
-                        </p>
-                        <p>
-                            <label>Phone Number</label>
-                            <input type="text" name="phone_number">
-                        </p>
-                        <div class="login_submit">
-                            <button type="submit">Register</button>
+                            <input type="text" name="name" id="name" required>
+                            <div id="name-error" class="form-error"></div>
                         </div>
+                        <div>
+                            <label>Email address <span>*</span></label>
+                            <input type="email" name="email" id="email" required>
+                            <div id="email-error" class="form-error"></div>
+                        </div>
+                        <div>
+                            <label>Password <span>*</span></label>
+                            <input type="password" name="password" id="password" required>
+                            <div id="password-error" class="form-error"></div>
+                        </div>
+                        <div>
+                            <label>Phone Number</label>
+                            <input type="text" name="phone_number" id="phone-number">
+                            <div id="phone-number-error" class="form-error"></div>
+                        </div>
+                        <button type="submit">Register</button>
                     </form>
                 </div>
             </div>
@@ -78,6 +80,8 @@
 <!-- Main JS -->
 <script src="assets/js/main.js"></script>
 <script src="assets/js/cart.js"></script>
+
+<script src="assets/js/RegValidation.js"></script>
 
 </body>
 

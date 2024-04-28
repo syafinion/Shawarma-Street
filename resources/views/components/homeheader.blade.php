@@ -153,6 +153,9 @@
                                                 </li>
                                             </ul>
                                         </li>
+                                        <li class="menu-item-has-children">
+                                    <a href="/myprofile">My Account</a>
+                                        </li>
                                         <li><a href="#">About Us <i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu home_sub_menu d-flex">
                                                 <li><span>About Us</span>

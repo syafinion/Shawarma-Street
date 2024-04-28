@@ -93,8 +93,7 @@
 <script src="assets/js/vendor/jquery-3.4.1.min.js"></script>
 
 <script src="assets/js/cartPage.js"></script>
-
-<script src="assets/js/cart.js"></script>
+<!-- <script src="assets/js/cart.js"></script> -->
 
 <!--popper min js-->
 <script src="assets/js/popper.js"></script>

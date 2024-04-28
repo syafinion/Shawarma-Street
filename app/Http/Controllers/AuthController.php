@@ -49,24 +49,26 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        $sql = "SELECT * FROM users WHERE email = ?";
-        $user = DB::select($sql, [$credentials['email']])[0] ?? null;
-
-        if (!$user) {
-            return back()->withErrors(['email' => 'No user found with that email address']);
+        // First, attempt to authenticate using Laravel's built-in functionality
+        if (Auth::attempt($credentials)) {
+            // Authentication passed, redirect to homepage with success message
+            return redirect('/')->with('success', 'Login successful');
         }
 
-        // Updated to use 'password' instead of 'password_hash'
-        if ($user && Hash::check($credentials['password'], $user->password)) {
-            // Manually logging in the user
-            Auth::loginUsingId($user->user_id);  // Ensure you use the correct attribute for user ID
+        // If Auth::attempt fails, manually verify if user exists to provide specific feedback
+        $user = DB::table('users')->where('email', $credentials['email'])->first();
 
-            // Redirect to the home page after successful login
-            return redirect('/')->with('success', 'Login successful');
+        // Check if user was found
+        if (!$user) {
+            // No user found with that email address
+            return back()->withErrors(['email' => 'No user found with that email address'])->withInput($request->only('email'));
         } else {
-            return back()->withErrors(['email' => 'The provided credentials do not match our records.']);
+            // User exists but password is incorrect
+            return back()->withErrors(['password' => 'Incorrect password provided'])->withInput($request->only('email'));
         }
     }
+
+
 
     public function logout(Request $request)
     {

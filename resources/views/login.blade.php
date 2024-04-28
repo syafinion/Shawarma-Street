@@ -27,25 +27,25 @@
                 <div class="account_form">
                     <h2>Login</h2>
                     <!-- Update the action to /login and method to POST -->
-                    <form action="/login" method="POST">
-                        @csrf <!-- CSRF Token for Laravel form submission security -->
-                        <p>
+                    <form action="/login" method="POST" id="loginForm">
+                        @csrf
+                        <div>
                             <label>Username or email <span>*</span></label>
-                            <input type="text" name="email" required>
-                        </p>
-                        <p>
-                            <label>Password <span>*</span></label>
-                            <input type="password" name="password" required>
-                        </p>
-                        <div class="login_submit">
-                            <a href="#">Lost your password?</a>
-                            <label for="remember">
-                                <input id="remember" type="checkbox" name="remember">
-                                Remember me
-                            </label>
-                            <button type="submit">Login</button>
+                            <input type="text" name="email" id="login-email" required>
+                            @error('email')
+                                <div id="login-email-error" class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
+                        <div>
+                            <label>Password <span>*</span></label>
+                            <input type="password" name="password" id="login-password" required>
+                            @error('password')
+                                <div id="login-password-error" class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <button type="submit">Login</button>
                     </form>
+
                 </div>
             </div>
             <!-- login area end -->
@@ -94,6 +94,9 @@
 <!-- Main JS -->
 <script src="assets/js/main.js"></script>
 <script src="assets/js/cart.js"></script>
+
+<script src="assets/js/loginValidation.js"></script>
+
 
 </body>
 
