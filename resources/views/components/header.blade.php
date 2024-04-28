@@ -168,7 +168,7 @@
                                     
 
                                     <div class="header_account_list  mini_cart_wrapper">
-                                       <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">2</span></a>
+                                       <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count"></span></a>
                                         
                                        <!--mini cart-->
                                         <div class="mini_cart">

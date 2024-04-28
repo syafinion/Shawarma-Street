@@ -99,7 +99,7 @@
                                 <tfoot>
                                     <tr>
                                         <th>Cart Subtotal</th>
-                                        <td>RM {{ number_format(array_reduce($cartItems, function($carry, $item) { return $carry + ($item->price * $item->quantity); }, 0), 2) }}</td>
+                                        <td id="subtotal_amount">RM {{ number_format(array_reduce($cartItems, function($carry, $item) { return $carry + ($item->price * $item->quantity); }, 0), 2) }}</td>
                                     </tr>
                                     <tr>
                                         <th>Order Type</th>
@@ -111,7 +111,7 @@
                                     </tr>
                                     <tr class="order_total">
                                         <th>Order Total</th>
-                                        <td><strong>RM {{ number_format(array_reduce($cartItems, function($carry, $item) { return $carry + ($item->price * $item->quantity); }, 0) + 5, 2) }}</strong></td>
+                                        <td><strong id="order_total">RM {{ number_format(array_reduce($cartItems, function($carry, $item) { return $carry + ($item->price * $item->quantity); }, 0), 2) }}</strong></td>
                                     </tr>
                                 </tfoot>
                             </table>     
@@ -193,44 +193,45 @@
 <script src="assets/js/cart.js"></script>
 
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
+    adjustShippingDisplay(); // Call on document ready to set up the initial display correctly
+
+    // Set up CSRF token for AJAX requests
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-});
 
-document.addEventListener('DOMContentLoaded', function () {
+    // Event listener for form submission action changes
     const form = document.getElementById('checkoutForm');
     const paymentMethodInputs = document.querySelectorAll('input[name="payment_method"]');
-
     paymentMethodInputs.forEach(input => {
         input.addEventListener('change', function() {
-            // Always POST the form, let the server handle redirection
             form.action = "{{ route('submitOrder') }}";
             form.method = "POST";
         });
     });
 });
 
-$(document).ready(function() {
-    // Initial setup for shipping based on order type
-    adjustShippingDisplay();
-
-    // Other existing setup code...
-});
-
 function adjustShippingDisplay() {
     const orderType = $('#display_order_type').text().trim();
+    const subtotalText = $('#subtotal_amount').text().trim().replace('RM', '');
+    const subtotal = parseFloat(subtotalText);
+    let shippingCost = 0;
+
     if (orderType === 'delivery') {
         $('.shipping_info').show();
+        shippingCost = 5.00; // Assuming RM5.00 is the shipping cost
     } else {
         $('.shipping_info').hide();
     }
-}
 
+    const total = subtotal + shippingCost;
+    $('#order_total').text(`RM${total.toFixed(2)}`);
+}
 </script>
+
 
 
 
