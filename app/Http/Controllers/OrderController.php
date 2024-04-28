@@ -16,9 +16,10 @@ class OrderController extends Controller
         }
 
         $userId = Auth::id();
-        $user = DB::select('SELECT * FROM users WHERE user_id = ?', [$userId])[0] ?? null;
-        $address = DB::select('SELECT * FROM addresses WHERE user_id = ?', [$userId])[0] ?? null;
+        $user = DB::table('users')->where('user_id', $userId)->first();
+        $address = DB::table('addresses')->where('user_id', $userId)->first();
         $cartItems = $this->getCartItems($userId);
+        $cart = DB::table('carts')->where('user_id', $userId)->first();
 
         if (empty($cartItems)) {
             return view('checkout')->with('message', 'Your cart is empty');
@@ -28,8 +29,10 @@ class OrderController extends Controller
             'user' => $user,
             'address' => $address,
             'cartItems' => $cartItems,
+            'orderType' => $cart ? $cart->order_type : 'dine_in'
         ]);
     }
+
 
     private function getCartItems($userId)
     {
@@ -46,6 +49,7 @@ class OrderController extends Controller
         $userId = Auth::id();
         $paymentMethod = $request->input('payment_method');
         $cartItems = $this->getCartItems($userId);
+        $orderType = DB::table('carts')->where('user_id', $userId)->value('order_type');
     
         if (!$cartItems) {
             return back()->with('error', 'Your cart is empty.');
@@ -58,9 +62,9 @@ class OrderController extends Controller
         DB::beginTransaction();
         try {
             $now = now()->toDateTimeString();
-            $insertOrderSQL = "INSERT INTO orders (user_id, customer_name, phone_number, total_price, order_status, order_notes, created_at, delivery_address_line1, delivery_address_line2, delivery_city, delivery_state, delivery_zip_code, delivery_country) VALUES (?, ?, ?, ?, 'pending', ?, ?, ?, ?, ?, ?, ?, ?)";
+            $insertOrderSQL = "INSERT INTO orders (user_id, order_type, customer_name, phone_number, total_price, order_status, order_notes, created_at, delivery_address_line1, delivery_address_line2, delivery_city, delivery_state, delivery_zip_code, delivery_country) VALUES (?, ?, ?, ?, ?, 'pending', ?, ?, ?, ?, ?, ?, ?, ?)";
             DB::insert($insertOrderSQL, [
-                $userId, $request->name, $request->phone_number, $totalPrice, $request->order_notes, $now, $request->street_address, $request->apartment, $request->city, $request->state, $request->zip_code, $request->country
+                $userId, $orderType, $request->name, $request->phone_number, $totalPrice, $request->order_notes, $now, $request->street_address, $request->apartment, $request->city, $request->state, $request->zip_code, $request->country
             ]);
             $orderId = DB::getPdo()->lastInsertId();
     
@@ -69,16 +73,22 @@ class OrderController extends Controller
                 DB::insert($insertItemSQL, [$orderId, $item->item_id, $item->quantity, $item->price]);
             }
     
-            // Create a transaction ID for all payment types, including 'pay at counter'
+            // Clear the cart items and the cart
+            $cartId = DB::table('carts')->where('user_id', $userId)->value('cart_id');
+            DB::delete("DELETE FROM cart_items WHERE cart_id = ?", [$cartId]);
+            DB::delete("DELETE FROM carts WHERE user_id = ?", [$userId]);
+    
+            // Handle payment processing
             $paymentTransactionId = ($paymentMethod === 'pay_at_counter') ? 'CTR-' . str_pad($orderId, 10, '0', STR_PAD_LEFT) : null;
             $updateOrderSQL = "UPDATE orders SET payment_transaction_id = ? WHERE order_id = ?";
             DB::update($updateOrderSQL, [$paymentTransactionId, $orderId]);
     
-            // Insert into payments table
             $insertPaymentSQL = "INSERT INTO payments (order_id, amount, payment_method, status, processed_at) VALUES (?, ?, ?, 'pending', ?)";
             DB::insert($insertPaymentSQL, [$orderId, $totalPrice, $paymentMethod, $now]);
     
             DB::commit();
+
+            session()->flash('orderSuccess', 'Your order has been successfully placed.');
     
             if ($paymentMethod === 'pay_at_counter') {
                 return redirect('/myprofile')->with('success', 'Order processed successfully at the counter.');
@@ -91,6 +101,8 @@ class OrderController extends Controller
             return back()->with('error', 'Error placing order: ' . $e->getMessage());
         }
     }
+    
+
     
 
 }

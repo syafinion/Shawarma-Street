@@ -102,8 +102,12 @@
                                         <td>RM {{ number_format(array_reduce($cartItems, function($carry, $item) { return $carry + ($item->price * $item->quantity); }, 0), 2) }}</td>
                                     </tr>
                                     <tr>
+                                        <th>Order Type</th>
+                                        <td><strong id="display_order_type">{{ $orderType }}</strong></td>
+                                    </tr>
+                                    <tr>
                                         <th>Shipping</th>
-                                        <td><strong>RM5.00</strong></td>
+                                        <td><strong class="shipping_info">RM5.00</strong></td>
                                     </tr>
                                     <tr class="order_total">
                                         <th>Order Total</th>
@@ -201,6 +205,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+$(document).ready(function() {
+    // Initial setup for shipping based on order type
+    adjustShippingDisplay();
+
+    // Other existing setup code...
+});
+
+function adjustShippingDisplay() {
+    const orderType = $('#display_order_type').text().trim();
+    if (orderType === 'delivery') {
+        $('.shipping_info').show();
+    } else {
+        $('.shipping_info').hide();
+    }
+}
+
 </script>
 
 

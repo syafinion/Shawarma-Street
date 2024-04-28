@@ -96,6 +96,11 @@ function updateCartUI() {
 }
 
 
+function clearCart() {
+    localStorage.removeItem('cart'); // Clear the cart from local storage
+    updateCartUI(); // Update the cart UI to reflect the empty cart
+}
+
 
 function addToCart(item) {
     const csrfToken = document.getElementById('csrfToken').value;
