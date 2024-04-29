@@ -69,25 +69,52 @@
                                         <h4 class="product_name"><a href="product-details.html">{{ $item->name }}</a></h4>
                                         <p><a href="#">{{ $item->category_name }}</a></p> <!-- Assuming the category is static; replace with dynamic if needed -->
                                         <div class="price_box">
-                                            <span class="current_price">${{ number_format($item->price, 2) }}</span>
+                                            <span class="current_price">RM{{ number_format($item->price, 2) }}</span>
+                                        </div>
+
+                                        <!-- Display stock status -->
+                                        <div class="stock_status">
+                                            @if($item->stock > 0)
+                                                <span class="in_stock">In Stock</span>
+                                            @else
+                                                <span class="out_of_stock">Out of Stock</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="product_content list_content">
                                         <h4 class="product_name"><a href="product-details.html">{{ $item->name }}</a></h4>
                                         <p><a href="#">{{ $item->category_name }}</a></p>
+
                                         <div class="price_box">
                                             <span class="current_price">RM{{ number_format($item->price, 2) }}</span>
                                         </div>
+                                            
+                                                                                
+                                        <!-- Display stock status -->
+                                        <div class="stock_status">
+                                            @if($item->stock > 0)
+                                                <span class="in_stock">In Stock</span>
+                                            @else
+                                                <span class="out_of_stock">Out of Stock</span>
+                                            @endif
+                                        </div>
+                                        
                                         <div class="product_desc">
                                             <p>{{ $item->description }}</p>
                                         </div>
                                         <div class="action_links list_action_right">
                                             <ul>
                                             <li class="add_to_cart">
-                                            <a href="javascript:void(0);" onclick="addToCart({ id: '{{ $item->item_id }}', name: '{{ $item->name }}', price: '{{ $item->price }}', image: '{{ $item->image_url }}' })" title="Add to cart">
-    <span class="lnr lnr-cart"></span>
-</a>
-<input type="hidden" id="csrfToken" value="{{ csrf_token() }}">
+                                                @if($item->stock > 0)
+                                                    <a href="javascript:void(0);" onclick="addToCart({ id: '{{ $item->item_id }}', name: '{{ $item->name }}', price: '{{ $item->price }}', image: '{{ $item->image_url }}' })" title="Add to cart">
+                                                        <span class="lnr lnr-cart"></span>
+                                                    </a>
+                                                @else
+                                                    <a href="javascript:void(0);" class="disabled" title="Out of Stock" style="cursor: not-allowed; opacity: 0.5;">
+                                                        <span class="lnr lnr-cart"></span>
+                                                    </a>
+                                                @endif
+                                                <input type="hidden" id="csrfToken" value="{{ csrf_token() }}">
                                             </li>
                                             </ul>
                                         </div>

@@ -9,35 +9,29 @@ class ItemController extends Controller
 {
     public function showItems(Request $request)
     {
-        $query = "SELECT items.*, categories.name AS category_name FROM items 
-                  INNER JOIN categories ON items.category_id = categories.category_id 
-                  WHERE items.available_status = 1";
+        $query = "SELECT items.*, categories.name AS category_name, items.stock FROM items 
+                  INNER JOIN categories ON items.category_id = categories.category_id";
 
         if ($request->has('query')) {
             $searchTerm = $request->input('query');
-            // Escape the search term to prevent SQL injection
-            $searchTerm = addslashes($searchTerm);
-            $query .= " AND items.name LIKE '%" . $searchTerm . "%'";
+            $searchTerm = addslashes($searchTerm);  // Safe guarding against SQL injection
+            $query .= " WHERE items.name LIKE '%" . $searchTerm . "%'";
+        } else {
+            $query .= " WHERE 1=1";  // This will allow for additional conditions without WHERE syntax errors
         }
 
         if ($request->has('category') && $request->category != '') {
             $categoryId = $request->input('category');
-            // Cast the category ID to an integer to prevent SQL injection
-            $categoryId = (int) $categoryId;
+            $categoryId = (int) $categoryId;  // Casting to integer for security
             $query .= " AND items.category_id = " . $categoryId;
         }
 
-        // Execute the raw SQL query
         $items = DB::select($query);
-        // Get all categories
         $categories = DB::select('SELECT * FROM categories');
 
-        // Return view with items and categories data
         return view('restaurantmenu', [
             'items' => $items,
             'categories' => $categories
         ]);
     }
 }
-
-
