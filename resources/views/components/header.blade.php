@@ -71,13 +71,13 @@
                         <div id="menu" class="text-left ">
                             <ul class="offcanvas_main_menu">
                             <li class="menu-item-has-children">
-                                    <a href="/">Promotions</a>
+                                    <a href="home.blade.php">Home</a>
                                 </li>
                                 <li class="menu-item-has-children active">
                                     <a href="#">Menu</a>
                                     <ul class="sub-menu">
                                         <li class="menu-item-has-children">
-                                            <a href="#">Menu</a>
+                                            <a href="restaurantmenu.blade.php">Menu</a>
                                             <ul class="sub-menu">
                                                         <li><a href="index-2.html">Shawarma</a></li>
                                                         <li><a href="index-3.html">Rice</a></li>
@@ -88,11 +88,11 @@
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="#">About Us </a>
+                                    <a href="">About Us </a>
                                     <ul class="sub-menu">
-                                            <li><a href="">History</a></li>
-                                            <li><a href="">Contact Us</a></li>
-                                            <li><a href="">FAQ</a></li>
+                                            <li><a href="history.blade.php">History</a></li>
+                                            <li><a href="contact.blade.php">Contact Us</a></li>
+                                            <li><a href="faq.blade.php">FAQ</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">

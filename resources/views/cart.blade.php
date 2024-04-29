@@ -1,7 +1,7 @@
 @include('components.header')
     
     <!--breadcrumbs area start-->
-    <div class="breadcrumbs_area">
+    <div class="breadcrumbs_area" style="background-color: #ae2108;">
         <div class="container">   
             <div class="row">
                 <div class="col-12">

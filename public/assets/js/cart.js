@@ -75,9 +75,6 @@ function updateCartUI() {
             <div class="cart_button">
                 <a href="/cart"><i class="fa fa-shopping-cart"></i> View cart</a>
             </div>
-            <div class="cart_button">
-                <a href="/checkout"><i class="fa fa-sign-in"></i> Checkout</a>
-            </div>
         </div>
     `;
 

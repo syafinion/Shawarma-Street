@@ -5646,8 +5646,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .breadcrumbs_area {
-  background: url(../img/bg/banner18.jpg) no-repeat 0 0;
-  background-size: cover;
+  background-color: #ae2108;
   height: 200px;
   display: flex;
   align-items: center;
@@ -5666,6 +5665,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-size: 42px;
   line-height: 50px;
   margin-bottom: 9px;
+  color: #FFFFFF;
 }
 @media only screen and (max-width: 767px) {
   .breadcrumb_content h3 {
@@ -5681,6 +5681,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   margin-right: 3px;
   padding-right: 13px;
   position: relative;
+  color: #FFFFFF;
 }
 .breadcrumb_content ul li::before {
   position: absolute;
