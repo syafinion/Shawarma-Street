@@ -88,4 +88,45 @@ class AuthController extends Controller
 
         return redirect('/');
     }
+
+
+    public function checkEmail(Request $request)
+{
+    $validatedData = $request->validate([
+        'email' => 'required|email'
+    ]);
+
+    $user = DB::select("SELECT * FROM users WHERE email = ?", [$validatedData['email']]);
+
+    if (empty($user)) {
+        return back()->withErrors(['email' => 'No account found with that email address'])->withInput();
+    }
+
+    // Store the email in the session to use in the next view
+    session(['email' => $validatedData['email']]);
+
+    // Redirect to a view where the user can reset their password
+    return view('reset');
+}
+
+
+
+// Add this method to AuthController
+public function resetPassword(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required|min:6|confirmed'
+    ]);
+
+    // Update password in the database
+    DB::statement("UPDATE users SET password = ? WHERE email = ?", [Hash::make($request->password), $request->email]);
+
+    // Redirect to the login page with a success message
+    return redirect('/login')->with('success', 'Your password has been reset successfully!');
+}
+
+
+
+    
 }

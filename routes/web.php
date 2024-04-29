@@ -35,6 +35,8 @@ Route::middleware(['web'])->group(function () {
         return view('cart', ['categories' => $categories]);
     });
 
+
+
     Route::get('/404', function () {
         $categories = DB::table('categories')->get();
         return view('404', ['categories' => $categories]);
@@ -82,6 +84,17 @@ Route::middleware(['web'])->group(function () {
 
     Route::post('/cancel-order', [UserController::class, 'cancelOrder'])->name('cancel-order');
 
+    Route::get('/check-email', function () {
+        $categories = DB::table('categories')->get();
+        return view('check-email', ['categories' => $categories]);
+    });
+
+
+    // Add this route to web.php for resetting password
+    Route::post('/reset', [AuthController::class, 'resetPassword'])->name('reset');
+
+    // Route for checking email exists and is setup for POST method
+    Route::post('/check-email', [AuthController::class, 'checkEmail'])->name('check-email');
 
 
 });

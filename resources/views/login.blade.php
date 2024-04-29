@@ -48,7 +48,10 @@
                                     <div class="alert alert-success">{{ session('success') }}</div>
                                 @endif
                             </div>
-                            <button type="submit">Login</button>
+                            <div class="login_submit">
+                               <a href="/check-email">Lost your password?</a>
+                                <button type="submit">login</button> 
+                            </div>
                         </form>
 
                 </div>
