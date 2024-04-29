@@ -19,10 +19,10 @@
                         <h3>Information</h3>
                         <div class="footer_menu">
                             <ul>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="/history">About Us</a></li>
+                                <li><a>Privacy Policy</a></li>
+                                <li><a>Terms & Conditions</a></li>
+                                <li><a href="/contact">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -32,37 +32,14 @@
                         <h3>Resources</h3>
                         <div class="footer_menu">
                             <ul>
-                                <li><a href="#">Documentation</a></li>
-                                <li><a href="#">Resource Links</a></li>
-                                <li><a href="#">External Resources</a></li>
-                                <li><a href="#">Help Center</a></li>
+                                <li><a>Documentation</a></li>
+                                <li><a">Resource Links</a></li>
+                                <li><a>External Resources</a></li>
+                                <li><a>Help Center</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-8">
-                <div class="widgets_container widget_newsletter">
-                    <h3>Contact Us</h3>
-                    <p class="footer_desc">If you have any questions, please feel free to contact us through our email or phone number.</p>
-                    <div class="subscribe_form">
-                        <form action="#" method="post" class="mc-form footer-newsletter">
-                            <div class="form-row">
-                                <input type="text" id="mc-name" autocomplete="off" placeholder="Your Name" required>
-                            </div>
-                            <div class="form-row">
-                                <input type="email" id="mc-email" autocomplete="off" placeholder="Your Email" required>
-                            </div>
-                            <div class="form-row">
-                                <textarea id="mc-message" placeholder="Your Message" required></textarea>
-                            </div>
-                            <div class="form-row button-row">
-                                <button id="mc-submit" class="footer-newsletter-btn">Send Message</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
 
 
             </div>
