@@ -38,7 +38,6 @@
                             <button data-role="grid_list" type="button"  class="active btn-list" data-toggle="tooltip" title="List"></button>
                         </div>
                         <div class="page_amount">
-                            <p>Showing 1–9 of 21 results</p>
                         </div>
                     </div>
                      <!--shop toolbar end-->
