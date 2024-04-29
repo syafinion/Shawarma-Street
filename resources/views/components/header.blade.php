@@ -74,7 +74,7 @@
                                     <a href="home.blade.php">Home</a>
                                 </li>
                                 <li class="menu-item-has-children active">
-                                    <a href="#">Menu</a>
+                                    <a href="restaurantmenu.blade.php">Menu</a>
                                     <ul class="sub-menu">
                                         <li class="menu-item-has-children">
                                             <a href="restaurantmenu.blade.php">Menu</a>
@@ -124,7 +124,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-2 col-md-3 col-sm-3 col-3">
                             <div class="logo">
-                                <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                <a href="home.blade.php"><img src="assets/img/logo/logo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-lg-10 col-md-6 col-sm-7 col-8">
@@ -257,9 +257,9 @@
                                 <nav>  
                                     <ul>
                                     <li class="menu-item-has-children">
-                                    <a href="/">Promotions</a>
+                                    <a href="/">Home</a>
                                         </li>
-                                        <li><a href="index.html">Menu<i class="fa fa-angle-down"></i></a>
+                                        <li><a>Menu<i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu home_sub_menu d-flex">
                                                 <li><span>Menu</span>
                                                     <ul>

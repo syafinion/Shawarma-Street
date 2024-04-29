@@ -102,7 +102,7 @@
                       </h2>
                     <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
                       <div class="card-body">
-                           <p>We love hearing from our customers! Whether you have feedback, suggestions, or simply want to share your dining experience with us, there are several ways to get in touch. You can leave a review on our website by clicking here or speak to a member of our team during your next visit. Your feedback is valuable to us as we strive to continuously improve and exceed your expectations.</p>
+                           <p>We love hearing from our customers! Whether you have feedback, suggestions, or simply want to share your dining experience with us, there are several ways to get in touch. You can leave a review on our website by going to order history or speak to a member of our team during your next visit. Your feedback is valuable to us as we strive to continuously improve and exceed your expectations.</p>
                       </div>
                     </div>
                   </div>
