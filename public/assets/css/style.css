@@ -8210,6 +8210,15 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 
+.contact_content {
+  padding: 69px 0 70px;
+}
+@media only screen and (max-width: 767px) {
+  .contact_content {
+    padding: 58px 0 60px;
+  }
+}
+
 /*contact page css end*/
 /* 17. login page css here */
 .account_form h2 {

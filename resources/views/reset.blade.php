@@ -12,7 +12,7 @@
     
  <!-- Reset Password Form -->
 <div class="customer_login">
-    <div class="container">
+    <div class="container"  style="background-color: #ae2108;">
         <div class="row">
             <div class="col-lg-6 col-md-6" style="margin-left: auto; margin-right: auto;">
                 <div class="account_form">

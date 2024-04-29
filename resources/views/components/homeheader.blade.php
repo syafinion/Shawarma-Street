@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../public/assets/img/favicon.png">
     
     <!-- CSS 
     ========================= -->
@@ -137,7 +137,7 @@
                             <div class="main_menu  menu_two color_two menu_position"> 
                                 <nav>  
                                     <ul>
-                                        <li class="mega_items"><a href="/">Promotions</a> </li>
+                                        <li class="mega_items"><a href="/">Home</a> </li>
                                         <li><a class="active"  href="{{ route('restaurant-menu') }}">Menu<i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu home_sub_menu d-flex">
                                                 <li><span>Menu</span>

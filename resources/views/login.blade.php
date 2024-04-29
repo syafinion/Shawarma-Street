@@ -1,34 +1,19 @@
 @include('components.header')
 
-    <!--breadcrumbs area start-->
-    <div class="breadcrumbs_area">
-        <div class="container">   
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb_content">
-                       <h3>Login</h3>
-                        <ul>
-                            <li><a href="index.html">home</a></li>
-                            <li>Login</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>         
-    </div>
-    <!--breadcrumbs area end-->
     
+<body>
     <!-- customer login start -->
-    <div class="customer_login">
+    <div class="customer_login" style="background-color: #ae2108;">
     <div class="container">
         <div class="row">
             <!-- login area start -->
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-6 col-md-6"  style="margin-left: auto; margin-right: auto;">
                 <div class="account_form">
-                    <h2>Login</h2>
+                    
                     <!-- Update the action to /login and method to POST -->
-                    <form action="/login" method="POST" id="loginForm">
-                            @csrf
+                    <form action="/login" method="POST" id="loginForm" style="background-color: white;">
+                    <h2>Login</h2>        
+                    @csrf
                             <div>
                                 <label>Username or email <span>*</span></label>
                                 <input type="text" name="email" id="login-email" required>

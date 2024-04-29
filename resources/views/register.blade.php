@@ -1,15 +1,16 @@
 @include('components.header')
     
     <!-- customer login start -->
-<div class="customer_login">
+<div class="customer_login" style="background-color: #ae2108;">
     <div class="container">
         <div class="row">
             <!-- register area start -->
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-6 col-md-6" style="margin-left: auto; margin-right: auto;">
                 <div class="account_form register">
-                    <h2>Register</h2>
+                    
                     <!-- Note the action points to the /register route and method is POST -->
-                    <form action="/register" method="POST" id="registerForm">
+                    <form action="/register" method="POST" id="registerForm" style="background-color: white;">
+                    <h2>Register</h2>
                         @csrf
                         <div>
                             <label>Name <span>*</span></label>
