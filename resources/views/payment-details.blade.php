@@ -49,7 +49,7 @@
         <div class="order-details mb-4 p-3 border rounded">
             <h4>Order Details:</h4>
             <p>Order ID: {{ $order->order_id }}</p>
-            <p>Total Price: ${{ number_format($order->total_price, 2) }}</p>
+            <p>Total Price: RM{{ number_format($order->total_price, 2) }}</p>
         </div>
         @endif
 
