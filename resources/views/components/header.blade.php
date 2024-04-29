@@ -262,11 +262,14 @@
                                         <li><a>Menu<i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu home_sub_menu d-flex">
                                                 <li><span>Menu</span>
-                                                    <ul>
-                                                        <li><a href="">Shawarma</a></li>
-                                                        <li><a href="">Rice</a></li>
-                                                        <li><a href="">Add ons</a></li>
-                                                        <li><a href="">Drinks & Desserts</a></li>
+                                                <ul>
+                                                    @foreach($categories as $category)
+                                                    <li>
+                                                        <a href="{{ route('restaurant-menu', ['category' => $category->category_id]) }}">
+                                                            {{ $category->name }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
                                                     </ul>
                                                 </li>
                                             </ul>
