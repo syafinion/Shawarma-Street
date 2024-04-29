@@ -46,19 +46,18 @@ class OrderController extends Controller
 
     public function submitOrder(Request $request)
 {
-    // Define the validation rules
     $validated = $request->validate([
         'name' => 'required|string|max:255',
         'phone_number' => 'required|numeric',
         'street_address' => 'required|string|max:255',
-        'apartment' => 'nullable|string|max:255', // Explicitly marked as nullable
+        'apartment' => 'nullable|string|max:255',
         'city' => 'required|string|max:255',
         'state' => 'required|string|max:255',
         'zip_code' => 'required|string|max:255',
         'country' => 'required|string|max:255',
         'email' => 'required|email|max:255',
         'payment_method' => 'required|string',
-        'order_notes' => 'nullable|string|max:1000', // Optional with max length
+        'order_notes' => 'nullable|string|max:1000',
     ]);
 
     $userId = Auth::id();
@@ -72,9 +71,16 @@ class OrderController extends Controller
     }
 
     $orderType = DB::table('carts')->where('user_id', $userId)->value('order_type');
-    $totalPrice = array_reduce($cartItems, function ($carry, $item) {
+    $baseTotal = array_reduce($cartItems, function ($carry, $item) {
         return $carry + ($item->price * $item->quantity);
     }, 0);
+
+    // Include shipping fee for delivery orders
+    $shippingFee = 0;
+    if ($orderType === 'delivery') {
+        $shippingFee = 5.00; // RM5 shipping fee
+    }
+    $totalPrice = $baseTotal + $shippingFee;
 
     DB::beginTransaction();
     try {
@@ -88,6 +94,7 @@ class OrderController extends Controller
 
         foreach ($cartItems as $item) {
             DB::insert("INSERT INTO order_items (order_id, item_id, quantity, price) VALUES (?, ?, ?, ?)", [$orderId, $item->item_id, $item->quantity, $item->price]);
+            DB::update("UPDATE items SET stock = stock - ? WHERE item_id = ?", [$item->quantity, $item->item_id]);
         }
 
         // Clear the cart items and the cart
@@ -117,6 +124,7 @@ class OrderController extends Controller
         return back()->with('error', 'Error placing order: ' . $e->getMessage());
     }
 }
+
 
 
     
