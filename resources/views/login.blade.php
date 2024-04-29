@@ -46,9 +46,11 @@
     </div>
 </div>
 
+
     <!-- customer login end -->
     @include('components.footer')
     <!--footer area end-->
+    
     
     
 <!-- JS

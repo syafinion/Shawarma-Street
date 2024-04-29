@@ -30,7 +30,7 @@ $(document).ready(function() {
     });
 });
 
-
+// Function to update the order type on the server
 function updateOrderType(orderType) {
     $.ajax({
         url: '/cart/update-order-type',
@@ -47,18 +47,18 @@ function updateOrderType(orderType) {
     });
 }
 
-
+// Function to update the cart total price
 function updateCartTotal() {
-    const orderType = $('input[name="order_type"]:checked').val();
-    const shippingCost = orderType === 'delivery' ? 5.00 : 0;
-    const subtotal = parseFloat($('#cart_subtotal').text().replace('RM', ''));
+    const orderType = $('input[name="order_type"]:checked').val(); // Get selected order type
+    const shippingCost = orderType === 'delivery' ? 5.00 : 0; // Set shipping cost based on order type
+    const subtotal = parseFloat($('#cart_subtotal').text().replace('RM', '')); // Get subtotal from DOM
 
-    $('#cart_total').text(`RM${(subtotal + shippingCost).toFixed(2)}`);
+    $('#cart_total').text(`RM${(subtotal + shippingCost).toFixed(2)}`); // Update cart total in DOM
 
     // Update the displayed shipping cost
     if (orderType === 'delivery') {
-        $('.cart_subtotal.shipping').show();
-        $('.shipping_cost').text(`Flat Rate: RM${shippingCost.toFixed(2)}`);
+        $('.cart_subtotal.shipping').show(); // Show shipping cost line
+        $('.shipping_cost').text(`Flat Rate: RM${shippingCost.toFixed(2)}`); // Update shipping cost
     } else {
         $('.cart_subtotal.shipping').hide(); // Hide the shipping cost line
     }
@@ -74,14 +74,14 @@ $(document).ready(function() {
 });
 
 
-
+// Function to fetch and display the cart
 function fetchAndDisplayCart() {
     $.ajax({
         url: '/cart/show',
         type: 'GET',
         success: function(response) {
             if (response && response.cartItems) {
-                updateServerCartUI(response.cartItems);
+                updateServerCartUI(response.cartItems); // Update the cart UI with fetched items
             }
         },
         error: function(error) {
@@ -91,15 +91,18 @@ function fetchAndDisplayCart() {
     });
 }
 
+// Function to update the cart UI based on server data
 function updateServerCartUI(cartItems) {
-    let subtotal = 0;
-    const cartBody = $('#cart_items');
+    let subtotal = 0; // Initialize subtotal
+    const cartBody = $('#cart_items'); // Select cart body element
     cartBody.empty(); // Clear existing cart items
 
     cartItems.forEach(item => {
-        const total = item.price * item.quantity;
-        subtotal += total;
-        cartBody.append(`
+        const total = item.price * item.quantity; // Calculate total price of the item
+        subtotal += total; // Add to subtotal
+        
+         // Append new item row to cart
+         cartBody.append(`
             <tr>
                 <td class="product_remove"><a href="javascript:void(0);" data-item-id="${item.item_id}"><i class="fa fa-trash-o"></i></a></td>
                 <td class="product_thumb"><a href="#"><img src="${item.image}" alt="${item.name}"></a></td>
@@ -113,9 +116,11 @@ function updateServerCartUI(cartItems) {
         `);
     });
 
-    $('#cart_subtotal').text(`RM${subtotal.toFixed(2)}`);
+    $('#cart_subtotal').text(`RM${subtotal.toFixed(2)}`); // Update cart subtotal in DOM
     updateCartTotal(); // Recalculate total based on the initial order type
 }
+
+// Function to remove an item from the cart
 
 function removeFromCart(itemId) {
     $.ajax({
@@ -135,6 +140,7 @@ function removeFromCart(itemId) {
     });
 }
 
+// Function to update the quantity of an item in the cart
 function updateItemQuantity(itemId, newQuantity) {
     if (newQuantity < 0) {
         alert("Quantity cannot be less than zero.");

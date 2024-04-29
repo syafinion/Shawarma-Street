@@ -79,7 +79,7 @@ class AuthController extends Controller
     }
 
 
-
+    // log out function
     public function logout(Request $request)
     {
         Auth::logout();
@@ -95,7 +95,7 @@ class AuthController extends Controller
     $validatedData = $request->validate([
         'email' => 'required|email'
     ]);
-
+    // Check email from database 
     $user = DB::select("SELECT * FROM users WHERE email = ?", [$validatedData['email']]);
 
     if (empty($user)) {

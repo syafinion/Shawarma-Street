@@ -7,8 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
+
+    // Function to display the items on restaurant menu page
     public function showItems(Request $request)
     {
+        // SQL Query for the items
         $query = "SELECT items.*, categories.name AS category_name, items.stock FROM items 
                   INNER JOIN categories ON items.category_id = categories.category_id";
 
@@ -19,7 +22,7 @@ class ItemController extends Controller
         } else {
             $query .= " WHERE 1=1";  // This will allow for additional conditions without WHERE syntax errors
         }
-
+        // Condition if the condition has category
         if ($request->has('category') && $request->category != '') {
             $categoryId = $request->input('category');
             $categoryId = (int) $categoryId;  // Casting to integer for security
