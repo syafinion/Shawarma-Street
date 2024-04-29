@@ -64,17 +64,21 @@
             <div class="mb-3">
                 <label for="cardNumber" class="form-label">Card Number</label>
                 <input type="text" class="form-control" id="cardNumber" name="card_number" required>
+                <div class="invalid-feedback">Please enter a valid 16-digit card number.</div>
             </div>
             <div class="mb-3">
                 <label for="expiryDate" class="form-label">Expiry Date</label>
                 <input type="month" class="form-control" id="expiryDate" name="expiry_date" required>
+                <div class="invalid-feedback">Expiry date cannot be in the past.</div>
             </div>
             <div class="mb-3">
                 <label for="cvv" class="form-label">CVV</label>
                 <input type="text" class="form-control" id="cvv" name="cvv" required>
+                <div class="invalid-feedback">Enter a 3 or 4 digit CVV.</div>
             </div>
             <button type="submit" class="btn btn-primary w-100">Process Payment</button>
         </form>
+
     </div>
 </div>
 
@@ -113,6 +117,62 @@
 
 <!-- Main JS -->
 <script src="assets/js/main.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector('.needs-validation');
+    const submitButton = form.querySelector('button[type="submit"]'); // Select the submit button
+
+    // Define the input elements
+    const cardNumberInput = document.getElementById('cardNumber');
+    const cvvInput = document.getElementById('cvv');
+    const expiryDateInput = document.getElementById('expiryDate');
+
+    form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+            submitButton.disabled = true; // Disable submit button if form is invalid
+        } else {
+            submitButton.disabled = false; // Ensure it's enabled if form is valid
+        }
+        form.classList.add('was-validated');
+    }, false);
+
+    validateInput(cardNumberInput, function(value) {
+        return value.length === 16 && !isNaN(parseInt(value));
+    }, 'Enter a valid 16-digit card number');
+
+    validateInput(cvvInput, function(value) {
+        return value.length >= 3 && value.length <= 4 && !isNaN(parseInt(value));
+    }, 'Enter a 3 or 4 digit CVV');
+
+    validateInput(expiryDateInput, function(value) {
+        const expiryDate = new Date(value);
+        const now = new Date();
+        expiryDate.setMonth(expiryDate.getMonth() + 1);
+        expiryDate.setDate(0); // Last day of the expiry month
+        return expiryDate >= now;
+    }, 'Expiry date cannot be in the past');
+});
+
+function validateInput(inputElement, isValidFunction, invalidMessage) {
+    inputElement.addEventListener('input', function() {
+        const valid = isValidFunction(this.value.replace(/\s+/g, ''));
+        if (valid) {
+            this.setCustomValidity('');
+            this.classList.remove('is-invalid');
+            this.form.querySelector('button[type="submit"]').disabled = false; // Enable submit button if valid
+        } else {
+            this.setCustomValidity(invalidMessage);
+            this.classList.add('is-invalid');
+            this.form.querySelector('button[type="submit"]').disabled = true; // Disable submit button if invalid
+        }
+    });
+}
+</script>
+
+
 
 </body>
 </html>
