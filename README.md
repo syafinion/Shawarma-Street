@@ -83,9 +83,10 @@ git clone https://github.com/syafinion/Shawarma-Street.git
 
 2. Install Composer Dependencies
 
-composer install
+- composer install
 
 3. Configure the Environment
+
 Copy the .env.example file to .env:
 
 cp .env.example .env
@@ -100,27 +101,29 @@ DB_PASSWORD=
 
 Generate an application key:
 
-php artisan key:generate
+- php artisan key:generate
 
 4. Set Up the Database
 Start your MySQL server via XAMPP
 
-- Create table called "comp1044_database"
+- Create database called "comp1044_database"
 
 Run the database migrations:
 
-php artisan migrate
+- php artisan migrate
 
 5. Run the Laravel Development Server
 Start the development server:
 
-php artisan serve
+- php artisan serve
+
 Your application should now be running at http://localhost:8000.
 
 Running Tests
+
 To run the tests for the project, use:
 
-php artisan test
+- php artisan test
 
 
 ## Troubleshooting
