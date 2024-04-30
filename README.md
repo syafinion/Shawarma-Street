@@ -96,10 +96,15 @@ Copy the .env.example file to .env:
 - Open the .env file and update the following values as needed:
 
 DB_CONNECTION=mysql
+
 DB_HOST=127.0.0.1
+
 DB_PORT=3306
+
 DB_DATABASE=comp1044_database
+
 DB_USERNAME=root
+
 DB_PASSWORD=
 
 Generate an application key:
