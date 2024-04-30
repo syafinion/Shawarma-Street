@@ -114,6 +114,7 @@ Run the database migrations:
 - php artisan migrate
 
 5. Run the Laravel Development Server
+
 Start the development server:
 
 - php artisan serve
