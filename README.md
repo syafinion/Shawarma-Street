@@ -89,8 +89,9 @@ git clone https://github.com/syafinion/Shawarma-Street.git
 
 Copy the .env.example file to .env:
 
-cp .env.example .env
-Open the .env file and update the following values as needed:
+- cp .env.example .env
+
+- Open the .env file and update the following values as needed:
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
