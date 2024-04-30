@@ -109,6 +109,7 @@ Generate an application key:
 `php artisan key:generate`
 
 4. Set Up the Database
+
 Start your MySQL server via XAMPP
 
 - Create database called "comp1044_database"
