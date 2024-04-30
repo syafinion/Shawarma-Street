@@ -64,3 +64,75 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Step To Run The Project
+
+To run this project, ensure you have the following software installed:
+
+PHP 7.4+
+Composer
+XAMPP or a web server stack of your choice
+MySQL
+Laravel 8.x or newer
+
+## Installation
+
+1. Clone the Repository
+
+git clone https://github.com/syafinion/Shawarma-Street.git
+
+2. Install Composer Dependencies
+
+composer install
+
+3. Configure the Environment
+Copy the .env.example file to .env:
+
+cp .env.example .env
+Open the .env file and update the following values as needed:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=comp1044_database
+DB_USERNAME=root
+DB_PASSWORD=
+
+Generate an application key:
+
+php artisan key:generate
+
+4. Set Up the Database
+Start your MySQL server via XAMPP
+
+- Create table called "comp1044_database"
+
+Run the database migrations:
+
+php artisan migrate
+
+5. Run the Laravel Development Server
+Start the development server:
+
+php artisan serve
+Your application should now be running at http://localhost:8000.
+
+Running Tests
+To run the tests for the project, use:
+
+php artisan test
+
+
+## Troubleshooting
+If you encounter issues, try the following:
+
+1. Database Issues:
+
+Ensure your MySQL server is running.
+
+Check the .env file for correct database credentials.
+
+If migrations fail, ensure your database user has the necessary permissions.
+
+Composer Issues:
+Ensure Composer is installed and in your system path.
