@@ -83,6 +83,8 @@ git clone https://github.com/syafinion/Shawarma-Street.git
 
 2. Install Composer Dependencies
 
+Go inside the shawarma street folder and run this command
+
 - composer install
 
 3. Configure the Environment
