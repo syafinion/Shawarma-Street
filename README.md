@@ -146,3 +146,9 @@ If migrations fail, ensure your database user has the necessary permissions.
 
 Composer Issues:
 Ensure Composer is installed and in your system path.
+
+2. Function Fail:
+
+If the add to cart is not working, run this command
+
+`php artisan migrate:fresh`
